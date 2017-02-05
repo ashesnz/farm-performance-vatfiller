@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('vatFiller', ['ionic', 'vatFiller.controllers', 'ui.bootstrap'])
+angular.module('vatFiller', ['ionic', 'vatFiller.controllers', 'ionic-material'])
 
 
 
@@ -49,7 +49,6 @@ angular.module('vatFiller', ['ionic', 'vatFiller.controllers', 'ui.bootstrap'])
 
    .state('app.summary', {
           url: '/summary',
-          cache: false,
           views: {
             'menuContent': {
               templateUrl: 'templates/summary.html',

@@ -12,21 +12,6 @@
   <ion-content has-subheader="true">
     <!-- MOB SELECTION -->
     <div class="list" ng-if="page.step == 'group'">
-      <div class="item item-divider" ng-if="mobs.list.length == 1">
-        Mob: {{mobs.list[0].name()}}
-      </div>
-      <div class="item item-divider" ng-if="mobs.list.length > 1">
-        Select a mob:
-      </div>
-      <div class="card" ng-if="mobs.list.length > 1">
-        <label class="item item-radio item-text-wrap" ng-repeat="mob in mobs.list">
-          <input type="radio" name="mobInput" ng-model="grazingPlan.mob" ng-model-options="{getterSetter: true}" ng-value="mob">
-          <div class="item-content">
-            {{mob.name()}}
-          </div>
-          <i class="radio-icon lic-tick"></i>
-        </label>
-      </div>
       <mob-info mob="grazingPlan.mob()" display-demand="true" display-form="true"></mob-info>
     </div>
 

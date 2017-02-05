@@ -175,6 +175,11 @@ img.lic-homepage  {
   width: 100%;
   font-size: 16px;
 }
+
+.lic-style .lic-homepage.button.big-button {
+  height: 100px;
+}
+
 .lic-style .lic-homepage.button.icon-left,
 .lic-style .lic-homepage.button.icon-right {
   padding: 5px 12px;

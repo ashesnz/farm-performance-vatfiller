@@ -1,18 +1,14 @@
 <div ng-controller="MobInfoController as mobinfo">
-  <!--<div class="item item-input row" ng-if="displayName === true || editName === true">
-    <div class="col col-33 item-text-wrap">Mob name</div>
-    <div class="col col-67" ng-if="editName === true">
-      <input type="text" ng-model="mob.name" ng-model-options="{getterSetter: true}" ng-change="onChange()"
-             select-on-focus>
-    </div>
-    <div class="col col-67 positive value-lic" ng-if="editName !== true">{{mob.name()}}</div>
-  </div>-->
 
-  <ion-list>
-    <ion-item ng-click="select_item(number)" ng-repeat="selectedMob in currentMobs">
-      {{selectedMob.name()}}
-    </ion-item>
-  </ion-list>
+  <div class="card" ng-if="mobList.length > 0">
+    <label class="item item-radio item-text-wrap" ng-repeat="selectedMob in mobList">
+      <input type="radio" name="mobInput" ng-model="grazingPlan.mob" ng-model-options="{getterSetter: true}" ng-value="selectedMob">
+      <div class="item-content">
+        {{selectedMob.name()}}
+      </div>
+      <i class="radio-icon lic-tick"></i>
+    </label>
+  </div>
 
   <div class="item item-input row">
     <div class="col col-75 item-text-wrap">Number of cows</div>

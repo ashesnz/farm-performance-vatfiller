@@ -14,7 +14,7 @@ angular.module('vatFiller')
         }
     })
     .controller('MobInfoController', ['$scope', '$ionicModal', 'features', 'mobs', function($scope, $ionicModal, features, mobs) {
-      $scope.currentMobs = mobs.list;
+      $scope.mobList = mobs.list;
 
       $ionicModal.fromTemplateUrl('mobInfoModal.html', {
             scope: $scope,
