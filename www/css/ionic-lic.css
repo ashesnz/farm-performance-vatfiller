@@ -1,0 +1,400 @@
+/* FONTS - Cut down versions of the Carlito font
+******************/
+@font-face {
+    font-family: 'LIC-Regular';
+    src: url('fonts/LIC-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'LIC-Bold';
+    src: url('fonts/LIC-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'LIC-Hand';
+    src: url('fonts/LIC-Hand.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'LIC-Icons';
+    src: url('fonts/LIC-Icons.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+/* list items
+******************/
+html .lic-style,
+.lic-style button {
+    font-family: "LIC-Regular", sans-serif;
+    font-size: 20px;
+}
+.lic-style .item {
+    color: #9d9d9d;
+    font-size: 20px;
+}
+
+.lic-style .item.item-divider {
+    font-family: "LIC-Bold", sans-serif;
+    font-weight: bold;
+    color: #666666;
+    background-color: transparent;
+    font-size: 20px;
+}
+.lic-style p {
+    font-size: 16px;
+}
+
+/* Removing border lines for .item except if child of a .card */
+.lic-style .list .item {
+    border: none;
+}
+.lic-style .list .card .item {
+    border: 1px solid #ffffff;
+}
+
+/* LIC TEMPLATE */
+.lic-style .button {
+    background-color: #0397d6;
+    border-radius: 0;
+    color: #ffffff;
+    border: none;
+    padding: 5px 12px;
+}
+
+
+/* Displaying values on right side
+***********************************/
+.value-lic {
+    font-family: "LIC-Bold", sans-serif;
+    font-weight: bold;
+    text-align: right;
+    padding: 5px;
+    margin-right: 5px;
+    /*
+    height: 48px;
+    line-height: 38px;
+    */
+}
+
+
+/* INPUT FIELDS
+******************/
+.lic-style .item-input input,
+.lic-style textarea {
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    box-shadow: inset 1px 1px 3px #aaa;
+    margin-right: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+    font-size: 18px;
+    height: 48px;
+}
+.lic-style input[type=number] { -moz-appearance: textfield; }
+.lic-style .item-input input[type="number"] {
+    text-align: right;
+}
+.lic-style .item-input input:focus,
+.lic-style .item-input textarea:focus {
+    border: 1px solid #82CBEB;
+    box-shadow: 0 0 6px #82CBEB;
+}
+.lic-style .item-input textarea {
+    width: 100%;
+    margin-right: 15px;
+    padding: 10px 5px;
+    line-height: 20px;
+}
+.lic-style @supports (-moz-outline-radius: 5px) or (outline-radius: 5px) {
+    .item-input input:focus {
+        outline: 1px solid #82CBEB;
+        -moz-outline-radius: 5px;
+        outline-radius: 5px;
+        border: 0;
+    }
+}
+.lic-style .item-input .input-label {
+    color: #9d9d9d;
+    flex: unset;
+    font-size: 20px;
+}
+
+/* RADIO BUTTONS */
+.lic-style .item-radio {
+    color: #ffffff;
+}
+.lic-style .item-radio .item-content {
+    background-color: #0397d6;
+    padding: 11px 49px 11px 16px;
+}
+.lic-style .item-radio input:checked ~ .item-content {
+    background-color: #1E3466;
+    color: #ffffff;
+}
+.lic-style .item-radio .radio-icon {
+    padding: 10px 14px;
+}
+
+/* SELECT AND OPTION FIELDS */
+.lic-style select {
+    font-family: "LIC-Regular", sans-serif;
+    font-size: 20px;
+}
+.lic-style .item-select select {
+    font-size: 18px;
+    text-overflow: ellipsis;
+}
+
+/* TITLE BAR
+******************/
+.lic-style .bar {
+    border-color: #1E3466;
+    background-color: #1E3466;
+    color: #fff;
+}
+.lic-style .bar .title {
+    color: #fff;
+    overflow: visible;
+    font-family: "LIC-Bold", sans-serif;
+    font-weight: bold;
+}
+.lic-style .bar .button {
+    margin-left: -5px;
+    margin-top: -5px;
+    margin-right: -5px;
+    height: 44px;
+}
+.lic-style .bar .button {
+    background-color: #0397d6;
+    color: #fff;
+}
+.lic-style .bar,
+.lic-style .bar .button  {
+    border-bottom: 1px solid #9d9d9d;
+}
+/* Logo */
+.bar-header .lic-logo:before {
+    color: #0397d6;
+    font-size: 170%;
+    vertical-align: middle;
+}
+
+/* SIDE MENU
+******************/
+
+.lic-style ion-side-menu .bar .title {
+    color: #fff;
+    font-weight: bold;
+}
+
+.lic-style ion-side-menu .list .item {
+    border: 1px solid #ffffff;
+}
+
+.lic-style ion-side-menu .item-content {
+    background-color: #0397d6;
+    color: #ffffff;
+}
+
+ion-side-menu, ion-side-menu.menu {
+    background-color: #1E3466;
+}
+.lic-style ion-side-menu .assertive-bg .item-content {
+    color: #ffffff;
+    background-color: #e62723;
+}
+
+/* ICONS
+******************/
+.lic-cow:before, .lic-2cows:before, .lic-3cows:before,
+.lic-snow:before, .lic-calendar:before, .lic-settings:before,
+.lic-menu:before, .lic-next:before, .lic-back:before,
+.lic-logo:before, .lic-tick:before, .lic-calc:before,
+.lic-edit-full:before, .lic-add-full:before, .lic-remove-full:before,
+.lic-save:before, .lic-close:before,
+.lic-home:before, .lic-info:before, .lic-reload:before
+{
+    display: inline-block;
+    font-family: 'LIC-Icons';
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-rendering: auto;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /*
+    content: " ";
+    height: 32px;
+    width: 32px;
+    font-size: 32px;
+    vertical-align: middle;
+    */
+}
+.lic-cow:before {       content: '1'; }
+.lic-2cows:before {     content: '2'; }
+.lic-3cows:before {     content: '3'; }
+.lic-snow:before {      content: 'w'; }
+.lic-calendar:before {  content: 'c'; }
+.lic-settings:before {  content: 's'; }
+.lic-home:before {      content: 'H'; }
+.lic-info:before {      content: 'I'; }
+.lic-reload:before {    content: 'o'; }
+.lic-menu:before {      content: 'M'; }
+.lic-next:before {      content: 'r'; }
+.lic-back:before {      content: 'l'; }
+.lic-logo:before {      content: 'L'; }
+.lic-tick:before {      content: 't'; }
+.lic-calc:before {      content: 'q'; }
+.lic-edit-full:before { content: 'E'; }
+.lic-add-full:before {  content: '+'; }
+.lic-remove-full:before {content: '-'; }
+.lic-save:before {      content: 'd'; }
+.lic-close:before {     content: 'x'; }
+.lic-alert:before {     content: '!'; }
+
+/* FIX TO WORK ON OLDER VERSIONS OF WEBKIT
+*********************************************/
+.lic-style .col-10 { width: 10% !important; }
+.lic-style .col-20 { width: 20% !important; }
+.lic-style .col-25 { width: 25% !important; }
+.lic-style .col-33 { width: 33.3333% !important; }
+.lic-style .col-50 { width: 50% !important; }
+.lic-style .col-67 { width: 66.6666% !important; }
+.lic-style .col-75 { width: 75% !important; }
+.lic-style .col-80 { width: 80% !important; }
+.lic-style .col-90 { width: 90% !important; }
+
+
+/* FIXES MINOR ISSUES IN IONIC STYLE
+ **************************************/
+.col .item-icon-right {
+    position: relative;
+}
+.icon[ng-click] {
+    cursor: pointer;
+}
+.icon[ng-click].active,
+.icon[ng-click].activated {
+    opacity: 0.6;
+}
+
+.lic-style .row {
+    padding: 0px 11px;
+}
+
+/* Adjusting scrolling */
+.lic-style ion-side-menu .scroll {
+    padding: 0px;
+}
+.lic-style .scroll {
+    padding-top: 20px;
+    padding-bottom: 100px;
+}
+
+/* Tabs */
+.lic-style .tabs {
+    height: 40px;
+    line-height: 40px;
+    border: 0;
+}
+.lic-style .tab-item {
+    opacity: 1;
+}
+.lic-style .tab-item.tab-item-active,
+.lic-style .tab-item.active,
+.lic-style .tab-item.activated,
+.lic-style .button.active,
+.lic-style .button.activated,
+.lic-style .item-radio.active,
+.lic-style .item-radio.activated {
+    opacity: 0.6;
+}
+
+/* iPhone top bar */
+/* Needs to add this javascript/angular code to create the element:
+    if(window.navigator.standalone) {
+        angular.element(document.getElementsByTagName('body')).prepend('<div class="iPhoneTopBar"></div>');
+    }
+*/
+.lic-style .iPhoneTopBar {
+    display: block;
+    width: 100%;
+    height: 20px;
+    background-color: #000000;
+}
+
+.lic-style .iPhoneTopBar ~ .view-container {
+    height: calc(100% - 20px);
+}
+.lic-style .iPhoneTopBar ~ .modal-backdrop {
+    top: 20px;
+    height: calc(100% - 20px);
+}
+
+
+/* overriding POSITIVE style (light blue)
+************************************/
+.lic-style .positive {
+    color: #1E3466;
+}
+
+.lic-style .button.button-positive {
+    color: #ffffff;
+    background-color: #1E3466;
+    border-radius: 0;
+    border: 0;
+}
+.lic-style .positive-bg {
+    color: #ffffff;
+    background-color: #1E3466;
+}
+
+/* overriding CALM style (light blue)
+************************************/
+.lic-style .calm {
+    color: #0397d6;
+}
+.lic-style .button.button-calm {
+    color: #ffffff;
+    background-color: #0397d6;
+    border-radius: 0;
+    border: 0;
+}
+.lic-style .calm-bg {
+    color: #ffffff;
+    background-color: #0397d6;
+}
+.lic-style .list .item.calm-bg {
+    border-top: 1px solid #ffffff;
+}
+
+
+/* overriding BALANCED style (green)
+************************************/
+.lic-style .button-balanced {
+    background-color: #c3e459;
+    color: #353f1b;
+    border: none;
+}
+
+/* overriding ASSERTIVE style (red)
+************************************/
+.lic-style .button-assertive {
+    background-color: #e62723;
+    color: #ffffff;
+    border: none;
+}
+
+.lic-style .assertive {
+    color: #e62723;
+}
+.lic-style .assertive-bg {
+    color: #ffffff;
+    background-color: #e62723;
+}
+/** THE END **/

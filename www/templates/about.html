@@ -1,0 +1,59 @@
+<ion-view ng-controller="AboutController as about" title="About - Vat Filler v0.1">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon lic-menu"></button>
+  </ion-nav-buttons>
+  <ion-nav-title>
+    <i class="icon lic-logo"></i>About this App
+  </ion-nav-title>
+  <ion-content>
+    <div class="list card">
+      <div class="item item-divider">FARMWISE VAT-filler</div>
+      <div class="item">
+        Version – v{{version}}
+      </div>
+      <div class="item calm-bg item-icon-right" ng-click="checkForUpdates()">
+        Check for updates
+        <i class="icon lic-reload"></i>
+      </div>
+      <div class="item">
+        App ID – {{unique_id}}
+      </div>
+      <div class="item item-divider">About</div>
+      <div class="item item-text-wrap">
+        <p>
+          This application is a prototype developed by LIC.
+        </p>
+        <p>
+          The purpose of this app is to offer you with a practical
+          tool that supports you in your feeding decisions on a daily basis.
+        </p>
+      </div>
+      <!--
+      <div class="item item-divider">Disclaimers</div>
+      <div class="item item-text-wrap">
+          <p>
+              While this prototype is designed to provide you with
+              the best features to support you in your work,
+              keep in mind that this application is still under development.
+          </p>
+          <p>
+              This means that in its current version, some bugs can occur.
+              Bugs can lead to inaccurate outputs,
+              or to losing data stored within the app.
+          </p>
+          <p>
+              Be assured that we do our best to prevent such bugs to happens,
+              but if you do discover any issue with the application,
+              please give us some feedback by contacting Benoit Mathern:
+              benoit.mathern@lic.co.nz
+          </p>
+
+      </div>
+      -->
+    </div>
+    <div class="back-next-buttons">
+      <p>Copyright &copy; 2015 LIC (v{{version}}). All rights reserved</p>
+    </div>
+  </ion-content>
+</ion-view>
+

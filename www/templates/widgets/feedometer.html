@@ -1,0 +1,12 @@
+<div ng-controller="FeedometerController">
+    <div class="feedometer {{graph.status()}}"><div class="measure color-{{feed.type()}}" style="width:{{feed.size()}}%" title="Proportion of feed from {{feed.type()}}" ng-repeat="feed in graph.feedList()">&nbsp;{{feed.label()}}</div></div>
+    <div class="feedometer-caption">
+        <!--<p>&nbsp;kg DM/cow</p>-->
+        <p format-num="-calculateMissingFeedPerCow()"></p>
+        <p ng-if="calculateMissingFeedPerCow() < 0">+&nbsp;</p>
+        FEED
+        <span ng-if="calculateMissingFeedPerCow() > 0">MISSING per cow</span>
+        <span ng-if="calculateMissingFeedPerCow() < 0">SURPLUS per cow</span>
+        <span ng-if="calculateMissingFeedPerCow() == 0">BALANCE</span>
+    </div>
+</div>

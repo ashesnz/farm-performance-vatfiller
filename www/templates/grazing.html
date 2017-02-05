@@ -1,0 +1,110 @@
+<ion-view ng-controller="GrazingController as grazing">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon lic-menu"></button>
+  </ion-nav-buttons>
+  <ion-nav-title>
+    <i class="icon lic-logo"></i>{{page.title}}
+  </ion-nav-title>
+  <div class="bar bar-subheader" ng-if="features.widgets.stepsSubtitles&&(page.subtitle() != undefined)">
+    <h2 class="title">{{page.subtitle()}}</h2>
+  </div>
+  <feedometer ng-if="page.step != 'group'"></feedometer>
+  <ion-content has-subheader="true">
+    <!-- MOB SELECTION -->
+    <div class="list" ng-if="page.step == 'group'">
+      <div class="item item-divider" ng-if="mobs.list.length == 1">
+        Mob: {{mobs.list[0].name()}}
+      </div>
+      <div class="item item-divider" ng-if="mobs.list.length > 1">
+        Select a mob:
+      </div>
+      <div class="card" ng-if="mobs.list.length > 1">
+        <label class="item item-radio item-text-wrap" ng-repeat="mob in mobs.list">
+          <input type="radio" name="mobInput" ng-model="grazingPlan.mob" ng-model-options="{getterSetter: true}" ng-value="mob">
+          <div class="item-content">
+            {{mob.name()}}
+          </div>
+          <i class="radio-icon lic-tick"></i>
+        </label>
+      </div>
+      <mob-info mob="grazingPlan.mob()" display-demand="true" display-form="true"></mob-info>
+    </div>
+
+    <!-- PADDOCK SELECTION -->
+    <div class="list" ng-if="page.step == 'paddock'">
+      <!-- display a single paddocks (only if more than one grazing) -->
+        <!--
+        <div class="card">
+          <label class="item item-divider item-radio item-text-wrap">
+            <input type="radio" name="paddockInput" ng-model="paddockInput" value="single">
+            <div class="item-content">
+              Same paddock
+            </div>
+            <i class="radio-icon ion-checkmark"></i>
+          </label>
+          <label class="item item-divider item-radio item-text-wrap">
+            <input type="radio" name="paddockInput" ng-model="paddockInput" value="multiple">
+            <div class="item-content">
+              Split accross paddocks
+            </div>
+            <i class="radio-icon ion-checkmark"></i>
+          </label>
+        </div>
+        -->
+        <paddock-info paddock="singlePaddock" display-form="true" ng-show="paddockInput == 'single'" on-change="updatePaddocks()"></paddock-info>
+        <div ng-repeat="feedPlan in grazingPlan.list" ng-show="paddockInput == 'multiple'">
+          <div class="item item-divider">
+            {{feedPlan.prefix}} Paddock
+          </div>
+          <paddock-info paddock="feedPlan.paddock" display-form="true"></paddock-info>
+          <div class="item item-input row" ng-if="grazingPlan.grazNum == 1">
+            <div class="input-label col col-75 item-text-wrap">
+              Optimal paddock area
+              <span class="input-unit">ha</span>
+            </div>
+            <div class="col col-25 positive value-lic"><span format-num="grazingPlan.pastureAreaRequired(feedPlan.paddock)"></span></div>
+          </div>
+        </div>
+    </div>
+
+
+    <!-- SUPPLEMENT SELECTION -->
+    <div class="list" ng-if="page.step == 'supplements'">
+      <div class="item item-input row" ng-if="grazingPlan.missingFeed() >= 0">
+        <div class="input-label col col-75 item-text-wrap">
+          Feed missing
+          <span class="input-unit">kg&nbsp;DM/cow</span>
+        </div>
+        <div class="col col-25 positive value-lic"><span format-num="grazingPlan.missingFeedPerCow()"></span></div>
+      </div>
+      <div class="item item-input row" ng-if="grazingPlan.missingFeed() < 0">
+        <div class="input-label col col-75 item-text-wrap">
+          Overfed by...
+          <span class="input-unit">kg&nbsp;DM/cow</span>
+        </div>
+        <div class="col col-25 positive value-lic"><span format-num="-grazingPlan.missingFeedPerCow()"></span></div>
+      </div>
+      <!-- list all the paddocks (always) -->
+      <div ng-repeat="feedPlan in grazingPlan.list">
+        <div class="item item-divider">
+          {{feedPlan.prefix}} Supplements
+        </div>
+        <supplement-list feed-plan-index="$index"></supplement-list>
+      </div>
+    </div>
+
+    <!-- SUMMARY -->
+    <grazing-summary ng-if="page.step == 'summary'"></grazing-summary>
+
+    <div class="back-next-buttons">
+        <a href="{{page.back()}}">
+          <button class="button icon lic-back"></button>
+        </a>
+        <a href="{{page.next()}}">
+          <button class="button icon lic-next" ng-if="page.step != 'summary'"></button>
+        </a>
+        <button class="button icon lic-tick" ng-click="page.save()" ng-if="page.step == 'summary'"></button>
+      </div>
+  </ion-content>
+  <steps-nav steps="navSteps" ng-if="features.widgets.stepsNav"></steps-nav>
+</ion-view>

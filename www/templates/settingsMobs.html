@@ -1,0 +1,28 @@
+<ion-modal-view ng-controller="SettingsMobsController">
+    <ion-header-bar class="bar bar-lic">
+        <button class="button icon lic-back" ng-click="page.back()" ng-if="!page.changed"></button>
+        <button class="button" ng-if="page.changed" ng-click="cancel()">Cancel</button>
+        <h1 class="title">{{modalTitle}}</h1>
+        <button class="button icon lic-save" ng-if="page.changed" ng-click="save()"></button>
+    </ion-header-bar>
+    <ion-content class="list">
+        <div ng-repeat="group in groups.list">
+            <div class="item item-divider">
+                #{{$index+1}}. {{group.name()}} <span ng-if="$index == groups.default">(default)</span>
+            </div>
+            <!-- DISPLAY -->
+            <div class="item item-text-wrap item-2icons-right item-icon-right" ng-if="!groupEdit[$index]">
+                {{group.size()}} cows @ <span format-num="group.intake()"></span>&nbsp;kg&nbsp;DM/day
+                <i class="icon lic-edit-full calm" ng-click="editGroup($index)"></i>
+                <i class="icon lic-remove-full calm" ng-click="deleteGroup($index)"></i>
+            </div>
+            <!-- EDITION -->
+            <mob-info mob="group" display-form="true" edit-name="true" on-change="page.change()" ng-if="groupEdit[$index]"></mob-info>
+
+        </div>
+        <div class="item item-icon-right" ng-click="editGroup()">
+            Add a mob
+            <i class="icon lic-add-full calm"></i>
+        </div>
+    </ion-content>
+</ion-modal-view>

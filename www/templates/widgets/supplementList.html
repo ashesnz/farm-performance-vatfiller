@@ -1,0 +1,15 @@
+<div ng-controller="SupplementListController">
+    <div class="item row item-input" ng-repeat="suppl in feedPlan.supplements.list">
+        <div class="col col-75">
+            <div class="item-text-wrap item-icon-right">
+                <i class="icon calm lic-calc" ng-click="autofill($index)"></i>
+                    {{suppl.name()}}
+                    <span class="input-unit">kg&nbsp;DM/cow</span>
+            </div>
+        </div>
+        <div class="col col-25">
+            <input ng-class="suppl.css" type="number" ng-model="qttPerCow(suppl)" ng-model-options="{getterSetter: true}"
+                   select-on-focus>
+        </div>
+    </div>
+</div>

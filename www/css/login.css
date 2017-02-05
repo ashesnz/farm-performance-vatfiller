@@ -1,0 +1,88 @@
+h2 {
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0px 0px;
+    border-color: #1E3466;
+    background-color: #1E3466;
+    color: #fff;
+    padding: 5px 15px;
+    font-size: 17px;
+    height: 43px;
+    line-height: 44px;
+    text-align: center;
+}
+h2 img{
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+}
+body {
+    margin: 15px;
+    padding-top: 50px;
+    padding-bottom: 60px;
+}
+p {
+    margin: 20px 0;
+    padding: 0;
+    text-align: justify;
+}
+button, .button {
+    background-color: #0397d6;
+    border-radius: 0;
+    color: #ffffff;
+    border: none;
+    padding: 5px 12px;
+    box-shadow: inset 1px 1px 3px #aaa;
+    font-size: 18px;
+    height: 48px;
+    width: 100%;
+    margin: 5px 0;
+    -webkit-appearance: none;
+}
+form {
+    margin: 5px;
+}
+input {
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    box-shadow: inset 1px 1px 3px #aaa;
+    font-size: 18px;
+    height: 48px;
+    width: 100%;
+}
+input[type=text], input[type=password] {
+    padding-right: 5px;
+    padding-left: 5px;
+    margin: 5px -5px;
+}
+input:focus {
+    border: 1px solid #82CBEB;
+    box-shadow: 0 0 6px #82CBEB;
+}
+.alert {
+    color: red;
+}
+.valid {
+    color: green;
+}
+footer {
+    position: fixed;
+    display: block;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0px 15px;
+    background-color: #ffffff;
+    padding: 0 5px;
+}
+
+#action-ribbon button {
+    margin: 0 -5px;
+    width: 50%;
+}
+#action-ribbon button + button {
+    float: right;
+}

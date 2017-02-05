@@ -1,0 +1,40 @@
+<div class="item item-input row">
+    <div class="input-label col col-75 item-text-wrap">
+        Cover
+        <span class="input-unit">kg&nbsp;DM/ha</span>
+    </div>
+    <div class="col col-25" ng-if="displayForm">
+        <input type="number" ng-model="paddock.cover" step="100" ng-min="0" ng-model-options="{getterSetter: true}" ng-change="onChange()" select-on-focus>
+    </div>
+    <div class="col col-25 positive value-lic" ng-if="!displayForm"><span format-num="paddock.cover()"></span></div>
+</div>
+<div class="item item-input row" ng-if="winterInput !== true">
+    <div class="input-label col col-75 item-text-wrap">
+        Area
+        <span class="input-unit">ha</span>
+    </div>
+    <div class="col col-25" ng-if="displayForm">
+        <input type="number" ng-model="paddock.size" step="0.1" ng-min="0" ng-model-options="{getterSetter: true}" ng-change="onChange()" select-on-focus>
+    </div>
+    <div class="col col-25 positive value-lic" ng-if="!displayForm"><span format-num="paddock.size()"></span></div>
+</div>
+<div class="item item-input row">
+    <div class="input-label col col-75 item-text-wrap">
+        Residual
+        <span class="input-unit">kg&nbsp;DM/ha</span>
+    </div>
+    <div class="col col-25" ng-if="displayForm">
+        <input type="number" ng-model="paddock.residual" step="100" ng-min="0" ng-model-options="{getterSetter: true}" ng-change="onChange()" select-on-focus>
+    </div>
+    <div class="col col-25 positive value-lic" ng-if="!displayForm"><span format-num="paddock.residual()"></span></div>
+</div>
+<div class="item item-input row" ng-if="displayQuality == true">
+    <div class="input-label col col-75 item-text-wrap">
+        Grass quality
+        <span class="input-unit">MJ&nbsp;ME/kg&nbsp;DM</span>
+    </div>
+    <div class="col col-25" ng-if="displayForm">
+        <input type="number" ng-model="paddock.quality" step="0.5" ng-min="0" ng-model-options="{getterSetter: true}" ng-change="onChange()" select-on-focus>
+    </div>
+    <div class="col col-25 positive value-lic" ng-if="!displayForm"><span format-num="paddock.quality()"></span></div>
+</div>

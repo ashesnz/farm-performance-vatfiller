@@ -1,0 +1,205 @@
+/* UNIT DISPLAY
+*****************/
+.input-unit {
+  color: #9d9d9d;
+  font-size: 12pt;
+}
+.input-unit:before {
+  content: "(";
+}
+.input-unit:after {
+  content: ")";
+}
+
+
+/* CALENDAR
+**************/
+#calendar > div {
+  margin: auto;
+}
+
+#calendar .calendar-graz1 a, #calendar .calendar-graz2 a, #calendar .calendar-graz3 a, #calendar .calendar-grazw a {
+  background: none;
+}
+.calendar-graz1 { background-color: pink;}
+.calendar-graz2 { background-color: #ffaffe;}
+.calendar-graz3 { background-color: #7bacff;}
+.calendar-grazw { background-color: #e33aff;}
+
+
+
+/* ANIMATIONS FOR FEEDBACK TO USERS WHEN INTERACTING -- SHOWS SOMETHING HAPPENED
+ * When clicking on calculator
+**********************************************************************************/
+.value-changed-alert-remove, .value-changed-ok-remove {
+  -webkit-transition:all ease-out 1.2s;
+  -moz-transition:all ease-out 1.2s;
+  -o-transition:all ease-out 1.2s;
+  transition:all ease-out 1.2s;
+}
+.lic-style .item-input input.value-changed-ok {
+  color: green;
+  background-color: #d3ffd3;
+}
+.lic-style .item-input input.value-changed-alert {
+  color: #c82400;
+  background-color: #ffd3d3;
+}
+
+
+/* FIXES POSITION FOR ICONS */
+.lic-style .col .item-icon-right .icon {
+  right: 0px;
+}
+.lic-style .col .item-icon-right {
+  padding-right: 43px;
+}
+
+/* FIX the settings buttons positions */
+.item-2icons-right {
+  padding-right: 97px;
+  width: 100%;
+}
+.item-2icons-right .icon {
+  right: 54px;
+}
+.item-2icons-right .icon+.icon {
+  right: 11px;
+}
+
+.lic-style .grayed,
+.lic-style .grayed.item,
+.lic-style .grayed .item,
+.lic-style .grayed.item-input .input-label,
+.lic-style .grayed .item-input .input-label,
+.lic-style .grayed .calm,
+.lic-style .grayed .positive {
+  color: #9d9d9d;
+}
+
+/* TAB BUTTONS
+****************/
+
+.lic-style .tab-item div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.lic-style .button.tab-item {
+  margin: 0px 10px;
+  overflow: visible;
+  font-size: 12px;
+  padding: 0;
+  line-height: 40px;
+  display: block;
+}
+.lic-style .tab-item:first-child {
+  margin-left: 0px;
+}
+.lic-style .tab-item:last-child {
+  margin-right: 0px;
+}
+
+.lic-style .tab-item:not(:first-child):before,
+.lic-style .tab-item:not(:last-child):after {
+  width: 0;
+  height: 0;
+  position: absolute;
+  content: " ";
+  border: 20px solid transparent;
+  top: 0px;
+}
+
+.lic-style .tab-item:not(:first-child):before {
+  border-left-width: 10px;
+  border-right-width: 0px;
+  left: -10px;
+}
+.lic-style .tab-item.button-calm:not(:first-child):before {
+  border-top-color: #0397d6;
+  border-bottom-color: #0397d6;
+}
+.lic-style .tab-item.button-positive:not(:first-child):before {
+  border-top-color: #1E3466;
+  border-bottom-color: #1E3466;
+}
+
+
+.lic-style .tab-item:not(:last-child):after {
+  left: 100%;
+}
+.lic-style .tab-item.button-calm:not(:last-child):after {
+  border-left: 10px solid #0397d6;
+}
+.lic-style .tab-item.button-positive:not(:last-child):after {
+  border-left: 10px solid #1E3466;
+}
+
+
+/* BACK/NEXT BUTTONS
+*********************/
+.back-next-buttons {
+  clear: both;
+  padding: 0px 16px;
+}
+.back-next-buttons > :first-child {
+  float: left;
+}
+.back-next-buttons > :last-child {
+  float: right;
+}
+
+
+/* HOME PAGE
+*************/
+img.lic-homepage  {
+  width: 75%;
+  max-width: 600px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+.lic-homepage.button .icon:before {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 64px;
+  line-height: 1;
+}
+.lic-style .lic-homepage.button {
+  font-family: "LIC-Bold", sans-serif;
+  font-weight: bold;
+  line-height: 25px;
+  padding: 5px;
+  width: 100%;
+  font-size: 16px;
+}
+.lic-style .lic-homepage.button.icon-left,
+.lic-style .lic-homepage.button.icon-right {
+  padding: 5px 12px;
+  line-height: 42px;
+}
+
+.item-divider + .card {
+  margin-top: 5px;
+}
+
+/* FEEDBACK BUTTON
+*******/
+
+.lic-style .feedback-grey-bg .item-content {
+  background-color: #9d9d9d;
+}
+
+textarea#feedbackArea {
+  height: 100px;
+}
+
+.intake-calculator-footer{
+  position: absolute;
+  bottom: 0;
+  color:white;
+  width: 100%;
+  height:  120px;
+}

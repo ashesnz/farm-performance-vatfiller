@@ -1,0 +1,35 @@
+<ion-modal-view ng-controller="SettingsWastageController">
+    <ion-header-bar class="bar bar-lic">
+        <button class="button icon lic-back" ng-click="page.back()" ng-if="!page.changed"></button>
+        <button class="button" ng-if="page.changed" ng-click="cancel()">Cancel</button>
+        <h1 class="title">{{modalTitle}}</h1>
+        <button class="button icon lic-save" ng-if="page.changed" ng-click="save()"></button>
+    </ion-header-bar>
+    <ion-content class="list">
+        <div class="item item-input row" ng-if="features.widgets.wastage">
+            <div class="input-label col col-75 item-text-wrap">
+                Pasture waste
+                <span class="input-unit">%</span>
+            </div>
+            <div class="col col-25">
+                <input type="number" ng-model="wastage.pasture" ng-model-options="{getterSetter: true}" ng-change="page.change()" select-on-focus>
+            </div>
+        </div>
+        <div class="item item-input row" ng-if="features.widgets.wastage">
+            <div class="input-label col col-75 item-text-wrap">
+                Supplement waste
+                <span class="input-unit">%</span>
+            </div>
+            <div class="col col-25">
+                <input type="number" ng-model="wastage.supplement" ng-model-options="{getterSetter: true}" ng-change="page.change()" select-on-focus>
+            </div>
+        </div>
+
+        <div class="item">
+          <button class="button button-assertive" ng-click="cancel()">Cancel</button>
+          <button class="button" ng-click="defaultWastage()">Set as default</button>
+          <button class="button icon lic-save" ng-click="saveWastageSettings()"></button>
+        </div>
+
+    </ion-content>
+</ion-modal-view>

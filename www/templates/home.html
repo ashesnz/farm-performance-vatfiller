@@ -1,0 +1,73 @@
+<ion-view>
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon lic-menu"></button>
+    </ion-nav-buttons>
+    <ion-nav-title>
+        <i class="icon lic-logo"></i>FARMWISE VAT FILLER
+    </ion-nav-title>
+    <ion-content class="padding">
+        <img class="lic-homepage" src="./img/home-title.png">
+        <div class="row">
+            <div class="col col-50">
+                <a href="#/app/grazingSteps/1aDay/group">
+                <button class="lic-homepage button">
+                    <i class="icon lic-cow"></i>
+                    ONE PADDOCK A DAY
+                </button>
+                </a>
+            </div>
+            <div class="col col-50">
+                <a href="#/app/grazingSteps/2aDay/group">
+                <button class="lic-homepage button">
+                    <i class="icon lic-2cows"></i>
+                    TWO PADDOCKS A DAY
+                </button>
+                </a>
+            </div>
+        </div>
+      <div class="row" ng-if="(features.pages.grazingType3 || features.pages.winterGrazing)">
+        <div class="col col-50" ng-if="features.pages.grazingType3">
+          <a href="#/app/grazingSteps/3in2Days/group">
+            <button class="lic-homepage button">
+              <i class="icon lic-3cows"></i>
+              3 IN 2 GRAZING
+            </button>
+          </a>
+        </div>
+        <div class="col col-50" ng-if="features.pages.winterGrazing">
+          <a href="#/app/grazingSteps/winter/group">
+            <button class="lic-homepage button">
+              <i class="icon lic-snow"></i>
+              WINTER GRAZING
+            </button>
+          </a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col col-50" ng-if="features.pages.calendar">
+          <a href="#/app/calendar">
+            <button class="lic-homepage button">
+              <i class="icon lic-calendar"></i>
+              CALENDAR
+            </button>
+          </a>
+        </div>
+        <div class="col col-50" ng-if="features.pages.summaries">
+          <a href="#/app/summary">
+            <button class="lic-homepage button icon-left lic-calendar">
+              SUMMARY
+            </button>
+          </a>
+        </div>
+        <div class="col col-50">
+          <a href="#/app/settings">
+            <button class="lic-homepage button icon-left lic-settings">
+              SETTINGS
+            </button>
+          </a>
+        </div>
+      </div>
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,14 @@
+{
+  "name": "VAT-Filler",
+  "icons": [
+    {
+      "src": "img/lic.png",
+      "sizes": "42x42",
+      "type": "image/png",
+      "density": "0.75"
+    }
+  ],
+  "start_url": "index.html",
+  "display": "standalone",
+  "orientation": "portrait"
+}

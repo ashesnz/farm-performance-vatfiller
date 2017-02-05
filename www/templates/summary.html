@@ -1,0 +1,37 @@
+<ion-view ng-controller="SummaryController" align-title="left" title="Summary">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon lic-menu"></button>
+  </ion-nav-buttons>
+  <ion-nav-title>
+    <i class="icon lic-logo"></i>Last summary per Mob
+  </ion-nav-title>
+  <feedometer ng-show="!noSummary"></feedometer>
+  <ion-content>
+    <div class="list" ng-show="noSummary">
+      <div class="item item-divider">No summary available.</div>
+    </div>
+    <div ng-show="!noSummary">
+      <!-- GROUP SELECTION -->
+      <div class="list">
+        <div class="item item-divider">
+          Select summary for...
+        </div>
+        <div class="card">
+          <label class="item item-radio item-text-wrap" ng-repeat="mob in mobList">
+            <input type="radio" name="mobInput" ng-model="selectMob" ng-model-options="{getterSetter: true}" value="{{mob}}">
+            <div class="item-content">
+              {{mob}} (updated on {{summaries[mob].date}})
+            </div>
+            <i class="radio-icon lic-tick"></i>
+          </label>
+        </div>
+      </div>
+      <grazing-summary></grazing-summary>
+    </div>
+
+    <!--<div class="back-next-buttons">
+        <button class="button icon-left lic-back" ng-click="goBack()" ng-controller="BackCtrl"></button>
+        <a class="button icon-right lic-tick" href="#/app/home"></a>
+    </div>-->
+  </ion-content>
+</ion-view>

@@ -1,0 +1,80 @@
+CACHE MANIFEST
+
+
+CACHE:
+
+# app root files
+index.html
+js/app.js
+
+
+# controllers
+js/controllers.js
+js/controllers/about.js
+js/controllers/confirmation.js
+js/controllers/cow.js
+js/controllers/disclaimer.js
+js/controllers/email.js
+js/controllers/menu.js
+js/controllers/score.js
+js/controllers/startsession.js
+js/controllers/summary.js
+
+# services
+js/services/animal.js
+js/services/disclaimer.js
+js/services/grid.js
+js/services/loading.js
+js/services/score.js
+js/services/scores.js
+js/services/screensettings.js
+
+# templates
+templates/about.html
+templates/confirmation.html
+templates/cow.html
+templates/disclaimer.html
+templates/email.html
+templates/menu.html
+templates/score.html
+templates/startsession.html
+templates/summary.html
+
+# libraries
+lib/ionic/js/ionic.bundle.min.js
+lib/jquery/dist/jquery.min.js
+lib/angular-bootstrap/ui-bootstrap-tpls.min.js
+lib/underscore/underscore-min.js
+lib/datejs/date.js
+lib/uuid-js/lib/uuid.js
+
+# css
+lib/ionic/css/ionic.min.css
+css/main.css
+lib/bootstrap/dist/css/bootstrap.min.css
+css/style.css
+
+# fonts
+css/fonts/LIC-Bold.ttf
+css/fonts/LIC-Regular.ttf
+css/fonts/LIC-Icons.ttf
+lib/ionic/fonts/ionicons.ttf?v=2.0.1
+lib/ionic/fonts/ionicons.woff?v=2.0.1
+
+# images
+img/ionic.png
+img/logo.svg
+
+# map
+lib/ionic/js/angular.min.js.map
+
+NETWORK:
+http://*
+https://*
+*
+
+SETTINGS:
+prefer-online
+
+
+# 33

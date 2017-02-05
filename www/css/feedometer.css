@@ -1,0 +1,85 @@
+/* Adjusting the offset on top of the page when the graph is displayed */
+feedometer {
+    padding: 5px 16px;
+    position: absolute;
+    top: 44px;
+    z-index: 10;
+    height: 64px;
+    width: 100%;
+    font-family: "LIC-Bold", sans-serif;
+    font-weight: bold;
+}
+
+.bar-subheader+feedometer,
+feedometer+.has-header {
+    top: 106px; /* 44 + 60 */
+}
+.bar-subheader+feedometer+.has-header {
+    top: 168px;
+}
+
+
+div.feedometer {
+    width: 100%;
+    height: 30px;
+    padding: 0;
+    border: 2px solid #9d9d9d;
+    overflow: hidden;
+    display: block;
+    font-size: 0;
+    white-space:nowrap;
+    background: #cdcdcd;
+    line-height: 30px;
+}
+
+div.feedometer .measure {
+    color: #ffffff;
+    height: 100%;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    display: inline-block;
+    overflow: hidden;
+    border-right: 1px solid #cdcdcd;
+    font-size: 16px;
+}
+
+div.feedometer .color-grass {
+    text-align: center;
+}
+
+div.feedometer.status-ok .measure.color-grass {
+    background-color: #a5dd2d;
+}
+div.feedometer.status-ok .measure.color-supplement {
+    background-color: #68c008;
+}
+
+div.feedometer.status-underfed .measure.color-grass {
+    background-color: #f09800;
+}
+
+div.feedometer.status-underfed .measure.color-supplement,
+div.feedometer.status-alert .measure.color-supplement {
+    background-color: #c57d00;
+}
+
+div.feedometer.status-overfed .measure.color-grass {
+    background-color: #e62723;
+}
+div.feedometer.status-overfed .measure.color-supplement {
+    background-color: #c82400;
+}
+
+feedometer .feedometer-caption {
+    color: #9d9d9d;
+    border-bottom: solid 2px #cdcdcd;
+    padding-top: 5px;
+    font-size: 16px;
+}
+feedometer p {
+    float: right;
+}

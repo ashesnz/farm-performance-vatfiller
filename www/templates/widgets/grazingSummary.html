@@ -1,0 +1,67 @@
+<div ng-controller="GrazingSummaryController">
+    <div class="item row assertive" ng-if="grazingPlan.missingFeed() > 0">
+        <div class="col col-75">
+            <div class="item-text-wrap item-icon-left">
+                <i class="icon lic-alert"></i>
+                Total feed missing
+                <span class="input-unit">kg&nbsp;DM</span>
+            </div>
+        </div>
+        <div class="col col-25 positive value-lic"><span format-num="grazingPlan.missingFeed()"></span></div>
+    </div>
+    <div class="item row assertive" ng-if="grazingPlan.missingFeed() < 0">
+        <div class="col col-75">
+            <div class="item-text-wrap item-icon-left">
+                <i class="icon lic-alert"></i>
+                Mob overfed by...
+                <span class="input-unit">kg&nbsp;DM</span>
+            </div>
+        </div>
+        <div class="col col-25 positive value-lic"><span format-num="-grazingPlan.missingFeed()"></span></div>
+    </div>
+    <div class="list">
+        <div class="item item-divider">
+            Cows
+        </div>
+        <mob-info mob="mob()" herd-demand="true" display-name="true"></mob-info>
+    </div>
+
+
+    <div class="list" ng-repeat="feedPlan in grazingPlan.list">
+        <div class="item item-divider" ng-if="feedPlan.prefix != undefined">
+            {{feedPlan.prefix}} Grazing
+        </div>
+
+        <div class="item item-divider">
+            Paddock
+        </div>
+        <paddock-info paddock="feedPlan.paddock"></paddock-info>
+
+        <div class="item item-divider">
+            Supplements
+        </div>
+        <div ng-repeat="suppl in feedPlan.supplements.list" ng-if="suppl.qtt() > 0">
+            <div class="item item-input row">
+                <div class="input-label col col-75 item-text-wrap">
+                    {{suppl.name()}}
+                    <span class="input-unit">kg&nbsp;DM/cow</span>
+                </div>
+                <div class="col col-25 positive value-lic"><span format-num="qttPerCow(suppl)()"></span></div>
+            </div>
+            <div class="item item-input row grayed">
+                <div class="input-label col col-75 item-text-wrap">
+                    Total {{suppl.name()}}
+                    <span class="input-unit">t&nbsp;DM</span>
+                </div>
+                <div class="col col-25 positive value-lic"><span format-num="suppl.qtt()/1000"></span></div>
+            </div>
+        </div>
+        <div class="item row" ng-if="feedPlan.supplements.qttDM() <= 0">
+            <div class="col">
+                No Supplement Required
+            </div>
+        </div>
+
+    </div>
+</div>
+

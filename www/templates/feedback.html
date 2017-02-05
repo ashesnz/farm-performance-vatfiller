@@ -1,0 +1,20 @@
+<ion-view>
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon lic-menu"></button>
+    </ion-nav-buttons>
+    <ion-nav-title>
+        <i class="icon lic-logo"></i>Feedback
+    </ion-nav-title>
+    <ion-content>
+        <div class="list">
+            <div class="item item-text-wrap hide-on-keyboard-open">Please give us feedback to improve this prototype</div>
+            <div class="item item-input item-text-wrap">
+                <textarea id="feedbackArea" placeholder="Type your feedback here..."></textarea>
+            </div>
+        </div>
+        <div class="back-next-buttons">
+            <button class="button icon-left lic-back" ng-click="goBack()" ng-controller="BackController">Cancel</button>
+            <button class="button icon-right lic-next" ng-click="submit()">Submit</button>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,18 @@
+<ion-modal-view ng-controller="SettingsPaddockController">
+    <ion-header-bar class="bar bar-lic">
+        <button class="button icon lic-back" ng-click="page.back()" ng-if="!page.changed"></button>
+        <button class="button" ng-if="page.changed" ng-click="cancel()">Cancel</button>
+        <h1 class="title">{{modalTitle}}</h1>
+        <button class="button icon lic-save" ng-if="page.changed" ng-click="save()"></button>
+    </ion-header-bar>
+    <ion-content class="list">
+        <paddock-info paddock="paddock" display-form="true" on-change="page.change()" ng-if="!features.widgets.feedQuality"></paddock-info>
+        <paddock-info paddock="paddock" display-form="true" display-quality="true" on-change="page.change()" ng-if="features.widgets.feedQuality"></paddock-info>
+    </ion-content>
+
+    <div class="item">
+      <button class="button button-assertive" ng-click="cancel()">Cancel</button>
+      <button class="button" ng-click="defaultPaddockGroup()">Set as default</button>
+      <button class="button icon lic-save" ng-click="savePaddockSettings()"></button>
+    </div>
+</ion-modal-view>
