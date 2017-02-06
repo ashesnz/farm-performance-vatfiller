@@ -1,48 +1,64 @@
 <div ng-controller="MobInfoController as mobinfo">
 
-  <div class="card" ng-if="mobList.length > 0">
+  <div class="item item-input row" ng-if="displayName === true || editName === true">
+    <div class="col col-33 item-text-wrap">Mob name</div>
+    <div class="col col-67" ng-if="editName === true">
+      <input type="text" ng-model="mob.name" ng-model-options="{getterSetter: true}" ng-change="onChange()" select-on-focus>
+    </div>
+    <div class="col col-67 positive value-lic" ng-if="editName !== true">{{mob.name()}}</div>
+  </div>
+
+  <div class="list card" ng-if="mobList.length > 0">
+    <div class="item item-divider">
+      Mobs
+    </div>
     <label class="item item-radio item-text-wrap" ng-repeat="selectedMob in mobList">
-      <input type="radio" name="mobInput" ng-model="grazingPlan.mob" ng-model-options="{getterSetter: true}" ng-value="selectedMob">
+      <input type="radio" name="mobInput" ng-model="mob" ng-value="selectedMob" ng-click="mobUpdate(selectedMob)" >
       <div class="item-content">
         {{selectedMob.name()}}
       </div>
       <i class="radio-icon lic-tick"></i>
     </label>
+
   </div>
 
-  <div class="item item-input row">
-    <div class="col col-75 item-text-wrap">Number of cows</div>
-    <div class="col col-25" ng-if="displayForm">
-      <input type="number" ng-model="mob.size" ng-model-options="{getterSetter: true}" ng-change="onChange()"
-             select-on-focus>
-    </div>
-    <div class="col col-25 positive value-lic" ng-if="!displayForm"><span format-num="mob.size()"></span></div>
-  </div>
-  <div class="item item-input row">
-    <div class="col col-75">
-      <div class="item-text-wrap item-icon-right" ng-if="enableIntakeCalculator && displayForm">
-        <i class="icon calm lic-calc" ng-click="openModal()" ng-if="enableIntakeCalculator"></i>
-        Cow daily intake
-        <span class="input-unit">kg&nbsp;DM</span>
+  <div class="list card">
+    <div class="item item-input row">
+      <div class="col col-75 item-text-wrap">Number of cows</div>
+      <div class="col col-25" ng-if="displayForm">
+        <input type="number" ng-model="mob.size" ng-model-options="{getterSetter: true}" ng-change="onChange()"
+               select-on-focus>
       </div>
-      <div class="item-text-wrap" ng-if="!enableIntakeCalculator || !displayForm">
-        Cow daily intake
-        <span class="input-unit">kg&nbsp;DM</span>
+      <div class="col col-25 positive value-lic" ng-if="!displayForm"><span format-num="mob.size()"></span></div>
+    </div>
+    <div class="item item-input row">
+      <div class="col col-75">
+        <div class="item-text-wrap item-icon-right" ng-if="enableIntakeCalculator && displayForm">
+          <i class="icon calm lic-calc" ng-click="openModal()" ng-if="enableIntakeCalculator"></i>
+          Cow daily intake
+          <span class="input-unit">kg&nbsp;DM</span>
+        </div>
+        <div class="item-text-wrap" ng-if="!enableIntakeCalculator || !displayForm">
+          Cow daily intake
+          <span class="input-unit">kg&nbsp;DM</span>
+        </div>
       </div>
+      <div class="col col-25" ng-if="displayForm">
+        <input type="number" ng-model="mob.intake" ng-model-options="{getterSetter: true}" ng-change="onChange()"
+               select-on-focus>
+      </div>
+      <div class="col col-25 positive value-lic" ng-if="!displayForm"><span format-num="mob.intake()"></span></div>
     </div>
-    <div class="col col-25" ng-if="displayForm">
-      <input type="number" ng-model="mob.intake" ng-model-options="{getterSetter: true}" ng-change="onChange()"
-             select-on-focus>
+    <div class="item item-input row" ng-if="displayDemand == true">
+      <div class="col col-75 item-text-wrap positive">
+        Mob demand
+        <span class="input-unit positive">kg&nbsp;DM</span>
+      </div>
+      <div class="col col-25 positive value-lic"><span format-num="mob.demand()"></span></div>
     </div>
-    <div class="col col-25 positive value-lic" ng-if="!displayForm"><span format-num="mob.intake()"></span></div>
+
   </div>
-  <div class="item item-input row" ng-if="displayDemand == true">
-    <div class="col col-75 item-text-wrap">
-      Mob demand
-      <span class="input-unit">kg&nbsp;DM</span>
-    </div>
-    <div class="col col-25 positive value-lic"><span format-num="mob.demand()"></span></div>
-  </div>
+
 
 
   <script id="mobInfoModal.html" type="text/ng-template">

@@ -95,6 +95,10 @@ angular.module('vatFiller')
                     DM: totalMJME / 11
             };
         };
+
+        $scope.mobUpdate = function(selectedMob) {
+          $scope.mob = selectedMob;
+        }
         $scope.copyAndClose = function() {
             var DM = $scope.calculateIntake().DM;
             $scope.mob.intake(Math.round(DM*10)/10);
