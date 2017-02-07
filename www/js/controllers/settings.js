@@ -3,7 +3,7 @@ angular
   .controller('SettingsController', settings)
 
 
-settings.$inject = ['$scope', '$ionicModal',  'grazingplan'];
+settings.$inject = ['$scope', '$ionicModal', 'grazingplan'];
 
 function settings($scope, $ionicModal, grazingplan){
   var self = this;
@@ -16,6 +16,7 @@ function settings($scope, $ionicModal, grazingplan){
       this.changed = true;
     }
   };
+
 
   grazingplan.init(); // Make sure that the GrazingPlan is initialised (because Mobs will be reinitialised anyway)
 
@@ -85,14 +86,12 @@ function settingsMob($scope, mobs, grazingplan) {
   $scope.save = function() {
     mobs.save();
     grazingplan.init();
-    $scope.page.changed = false;
     $scope.modal.hide();
   };
   /* GROUPS */
   $scope.deleteGroup = function(index) {
     $scope.groups.removeMob(index);
     $scope.groupEdit.splice(index,1);
-    $scope.page.changed = true;
   };
   $scope.editGroup = function(index) {
     if(angular.isDefined(index)) { // editing existing Supplement
@@ -107,12 +106,10 @@ function settingsMob($scope, mobs, grazingplan) {
       $scope.groupEdit[index] = false;
       Mobs.save();
       grazingplan.init();
-      $scope.page.changed = false;
     }
   };
   $scope.defaultGroup = function(index) {
     $scope.groups.default = index;
-    $scope.page.changed = true;
   };
 
   $scope.load = function() {
@@ -123,9 +120,10 @@ function settingsMob($scope, mobs, grazingplan) {
       $scope.groupEdit.push(false);
     });
 
-    $scope.page.changed = false;
   };
-  $scope.cancel = function() { $scope.load(); };
+  $scope.cancel = function() {
+    $scope.modal.hide();
+  };
   $scope.load();
 }
 
@@ -140,13 +138,11 @@ function settingsPaddock($scope, paddock, grazingplan) {
   $scope.save = function() {
     $scope.paddock.saveAsDefault();
     grazingplan.init();
-    $scope.page.changed = false;
     $scope.modal.hide();
   };
 
   $scope.load = function() {
     $scope.paddock = new paddock();
-    $scope.page.changed = false;
   };
 
   $scope.cancel = function() { $scope.load(); };
@@ -173,12 +169,10 @@ function settingsWastage($scope, paddock, grazingplan) {
   $scope.save = function() {
     $scope.paddock.saveAsDefault();
     grazingplan.init();
-    $scope.page.changed = false;
     $scope.modal.hide();
   };
   $scope.load = function() {
     $scope.paddock = new paddock();
-    $scope.page.changed = false;
   };
   $scope.cancel = function() { $scope.load(); };
 
@@ -215,7 +209,6 @@ function settingsSupplements($scope, supplements, supplement, grazingplan) {
     });
     $scope.supplements.saveAsDefault();
     grazingplan.init();
-    $scope.page.changed = false;
     $scope.modal.hide();
   };
   $scope.load = function() {
@@ -246,8 +239,6 @@ function settingsSupplements($scope, supplements, supplement, grazingplan) {
       $scope.supplementEdit.push(false);
     });
 
-
-    $scope.page.changed = false;
   };
   $scope.cancel = function() { $scope.load(); };
   $scope.load();

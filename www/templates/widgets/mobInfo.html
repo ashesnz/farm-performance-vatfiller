@@ -12,15 +12,18 @@
     <div class="item item-divider">
       Mobs
     </div>
-    <label class="item item-radio item-text-wrap" ng-repeat="selectedMob in mobList">
-      <input type="radio" name="mobInput" ng-model="mob" ng-value="selectedMob" ng-click="mobUpdate(selectedMob)" >
-      <div class="item-content">
-        {{selectedMob.name()}}
-      </div>
-      <i class="radio-icon lic-tick"></i>
-    </label>
+    <ion-list>
+      <label class="item item-icon-left item-radio" ng-repeat="selectedMob in mobList">
+        <input type="radio" name="mobInput" ng-model="mob" ng-value="selectedMob" ng-click="mobUpdate(selectedMob)" >
+        <div class="item-content">
+          {{selectedMob.name()}}
+        </div>
+        <i class="radio-icon lic-tick"></i>
+      </label>
+    </ion-list>
 
   </div>
+
 
   <div class="list card">
     <div class="item item-input row">
@@ -49,7 +52,7 @@
       </div>
       <div class="col col-25 positive value-lic" ng-if="!displayForm"><span format-num="mob.intake()"></span></div>
     </div>
-    <div class="item item-input row" ng-if="displayDemand == true">
+    <div class="item item-divider item-input row" ng-if="displayDemand == true">
       <div class="col col-75 item-text-wrap positive">
         Mob demand
         <span class="input-unit positive">kg&nbsp;DM</span>
@@ -59,12 +62,10 @@
 
   </div>
 
-
-
   <script id="mobInfoModal.html" type="text/ng-template">
     <ion-modal-view>
       <ion-header-bar class="bar bar-lic">
-        <button class="button icon lic-back" ng-click="modal.hide()"></button>
+        <button class="button-icon icon lic-back" ng-click="modal.hide()"></button>
         <h1 class="title">Intake Calculator</h1>
       </ion-header-bar>
       <ion-content>

@@ -17,7 +17,7 @@ angular
             prefixes = [ 'Morning', 'Afternoon' ];
             this.grazNum = 2;
             this.days = 1;
-            this.steps = 5;
+            this.steps = 4;
             break;
           case '3in2Days':
             prefixes = [ 'First', 'Second', 'Third' ];
@@ -71,11 +71,11 @@ angular
       totalDemand: function() {
         return this.mob().demand()*this.days;
       },
-      pastureAreaRequired: function(paddock) {
+      /*pastureAreaRequired: function(paddock) {
         var quality_ratio = paddock.quality()/11;
         var missingArea = this.missingFeed() / ((paddock.cover() - paddock.residual()) * quality_ratio * paddock.utilisation());
         return paddock.size() + missingArea;
-      },
+      },*/
       missingFeed: function() {
         var feedMissing = this.totalDemand();
         this.list.forEach(function(feedPlan) {

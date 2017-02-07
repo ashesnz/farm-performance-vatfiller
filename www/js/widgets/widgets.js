@@ -15,20 +15,7 @@ angular.module('vatFiller')
             }
         }
     })
-    .directive('paddockInfo', function() {
-        return {
-            restrict: 'E',
-            scope: {
-                paddock: '=',
-                displayForm: '=',
-                winterInput: '=',
-                displayQuality: '=',
-                onChange: '&onChange',
-                paddockPregraze: '='
-            },
-            templateUrl: 'templates/widgets/paddockInfo.html'
-        }
-    })
+
     .directive('stepsNav', function() {
         return {
             restrict: 'E',

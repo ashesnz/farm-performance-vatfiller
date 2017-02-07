@@ -127,7 +127,7 @@ html .lic-style,
     color: #ffffff;
 }
 .lic-style .item-radio .item-content {
-    background-color: #0397d6;
+    color: black;
     padding: 11px 49px 11px 16px;
 }
 .lic-style .item-radio input:checked ~ .item-content {
@@ -160,16 +160,27 @@ html .lic-style,
     overflow: visible;
     font-family: "LIC-Bold", sans-serif;
     font-weight: bold;
+    text-align: center;
 }
 
 .lic-style .bar .button {
     background-color: #0397d6;
     color: #fff;
+    max-width: 100px;
+    width: 100%;
 }
+
 .lic-style .bar,
 .lic-style .bar .button  {
     border-bottom: 1px solid #9d9d9d;
 }
+
+.lic-style a.button.button-icon.button-clear {
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 39px;
+}
+
 /* Logo */
 .bar-header .lic-logo:before {
     color: #0397d6;

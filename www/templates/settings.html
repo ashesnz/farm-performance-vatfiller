@@ -1,7 +1,16 @@
 <ion-view ng-controller="SettingsController as settings">
     <ion-nav-buttons side="left">
-        <button menu-toggle="left" class="button button-icon icon lic-menu"></button>
+        <button menu-toggle="left" class="button-icon icon lic-menu"></button>
     </ion-nav-buttons>
+
+  <ion-nav-buttons side="right">
+    <a class="button button-icon button-clear" href="#/app/home" >
+      Back
+    </a>
+
+  </ion-nav-buttons>
+
+
     <ion-nav-title>
         <i class="icon lic-logo"></i>{{page.title}}
     </ion-nav-title>
@@ -32,10 +41,5 @@
             </div>
         </div>
 
-        <div class="list">
-            <div class="item">
-                <button class="button lic-back" ng-click="goBack()" ng-controller="BackController"></button>
-            </div>
-        </div>
     </ion-content>
 </ion-view>

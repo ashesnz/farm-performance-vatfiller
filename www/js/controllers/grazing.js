@@ -95,7 +95,7 @@ function grazing($scope, $stateParams, $location, mobs, features, grazingplan, p
   }
   navSteps.names = [
     'Mob',
-    'Grass',
+    'Paddock',
     'Supplements',
     'Summary'
   ];
