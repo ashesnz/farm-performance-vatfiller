@@ -15,4 +15,14 @@ angular.module('vatFiller')
                 return angular.isDefined(val)?suppl.qtt(val*grazingplan.mob().size()):suppl.qtt()/grazingplan.mob().size();
             }
         };
+
+        $scope.noSupplementsRequired = function(supplementList) {
+          supplementList.forEach(function (s) {
+            if (s.qtt() > 0) {
+              return false;
+            }
+          });
+
+          return true;
+        }
     }]);

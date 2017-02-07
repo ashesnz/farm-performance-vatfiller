@@ -126,6 +126,14 @@
 .bar button.button-icon {
   color: #fff;
 }
+input.search-input {
+  width:100%;
+  padding-left:11px;
+}
+
+.bar.bar-header.item-input-inset {
+  background-color: #fff;
+}
 
 .lic-style .tab-item:not(:last-child):after {
   left: 100%;

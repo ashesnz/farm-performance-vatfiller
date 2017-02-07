@@ -194,6 +194,7 @@ angular
   .module('vatFiller')
   .controller('SettingsSupplementsController', settingsSupplements)
 
+
 settingsSupplements.$inject = ['$scope', 'supplements', 'supplement', 'grazingplan'];
 
 function settingsSupplements($scope, supplements, supplement, grazingplan) {
@@ -211,6 +212,20 @@ function settingsSupplements($scope, supplements, supplement, grazingplan) {
     grazingplan.init();
     $scope.modal.hide();
   };
+
+  $scope.listlength = 20;
+
+  $scope.loadMore = function(){
+    if (!$scope.predefinedList){
+      $scope.$broadcast('scroll.infiniteScrollComplete');
+      return;
+    }
+
+    if ($scope.listlength < $scope.predefinedList.length)
+      $scope.listlength+=10;
+    $scope.$broadcast('scroll.infiniteScrollComplete');
+  }
+
   $scope.load = function() {
     $scope.supplements = new supplements();
     $scope.predefinedList = $scope.supplements.getPredefinedList();
@@ -240,16 +255,11 @@ function settingsSupplements($scope, supplements, supplement, grazingplan) {
     });
 
   };
-  $scope.cancel = function() { $scope.load(); };
+  $scope.cancel = function() {
+    $scope.load();
+  };
   $scope.load();
 
 
-  $scope.defaultSupplements = function() {
-
-  }
-
-  $scope.saveSupplementsSettings = function() {
-
-  }
 
 }

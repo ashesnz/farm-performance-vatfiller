@@ -2,7 +2,8 @@ angular.module('vatFiller')
   .factory('supplements', ['supplement', function(supplement) {
     function Supplements() {
       this.list = [];
-      var default_suppl =  window.localStorage.getItem('supplements');
+
+      var default_suppl =  JSON.parse(window.localStorage.getItem('supplements'));
       if(default_suppl !== null) {
         default_suppl.forEach(function(suppl) {
           this.list.push(new supplement(suppl.name,suppl.quality,suppl.propDM,suppl.density,suppl.utilisation));
@@ -27,7 +28,7 @@ angular.module('vatFiller')
             //utilisation: suppl.utilisation()
           });
         });
-        window.localStorage['supplements'] = supplJSON;
+        localStorage.setItem('supplements', JSON.stringify(supplJSON));
       },
       qttDM: function() {
         var total = 0;
@@ -46,6 +47,11 @@ angular.module('vatFiller')
           return suppl;
         }
         else {console.log('supplement already exists',name);}
+      },
+      supplementsAdded: function() {
+        this.list.forEach(function(suppl) {
+          console.log(suppl);
+        });
       },
       removeSupplement: function(indexOrName) {
         var newList = [];
