@@ -3,9 +3,9 @@ angular
   .controller('GrazingController', grazing);
 
 
-grazing.$inject = ['$scope', '$stateParams', '$location', 'features', 'mobs', 'grazingplan', 'paddock', 'summaries', 'woopratracking'];
+grazing.$inject = ['$scope', '$stateParams', '$location', 'features', 'mobs', 'grazingplan', 'paddock', 'summaries'];
 
-function grazing($scope, $stateParams, $location, mobs, features, grazingplan, paddock, summaries, woopratracking){
+function grazing($scope, $stateParams, $location, mobs, features, grazingplan, paddock, summaries){
   var self = this;
 
   var grazType =  $stateParams.grazType;
@@ -40,7 +40,7 @@ function grazing($scope, $stateParams, $location, mobs, features, grazingplan, p
       ][index];
     },
     save: function() {
-   //   woopratracking.trackDecision('Summary', summaries.get())
+
       summaries.save();
       $location.path('/app/home');
     }

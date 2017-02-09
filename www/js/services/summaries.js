@@ -1,5 +1,5 @@
 angular.module('vatFiller')
-  .factory('summaries', ['grazingplan', function(grazingplan) {
+  .factory('summaries', ['grazingplan', 'woopratracking', function(grazingplan, woopratracking) {
     var summaries={};
     var load = function() {
       summaries = JSON.parse(window.localStorage.getItem('summaries'));
@@ -12,11 +12,15 @@ angular.module('vatFiller')
     return {
       save: function() {
         var d = new Date();
-        summaries[grazingplan.summaryName] = {
-          plan: grazingplan._toJSON(),
+
+        var latestsummary = summaries[grazingplan.summaryName] = {
+          plan: JSON.stringify(grazingplan._toJSON()),
           date: d.toLocaleDateString()
         };
-        localStorage.setItem('summaries', JSON.stringify(summaries));
+
+        localStorage.setItem('summaries', JSON.stringify(latestsummary));
+
+        woopratracking.trackDecision('Summary', latestsummary);
       },
       get: function() {
         return summaries;

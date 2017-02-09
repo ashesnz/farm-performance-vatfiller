@@ -57,7 +57,7 @@ angular.module('vatFiller')
           break;
       }
       debug("collecting", e.type);
-    //  woopra.track(e.type, attr);
+      woopra.track(e.type, attr);
 
     };
 
@@ -77,7 +77,17 @@ angular.module('vatFiller')
           woopra.config({ domain: 'dev.vatfiller.agrimetrics.co.nz' });
         }
 
-      //  woopra.track();
+        var uuid = window.localStorage.getItem('uuid');
+        if (uuid) {
+        } else {
+          uuid = UUIDjs.create(4).toString();
+          localStorage.setItem('uuid', uuid);
+        }
+
+        woopra.identify("uuid", uuid).push();
+
+
+        woopra.track();
 
         $(document).on('click', collector);
         $(document).on('change', 'input', collector);
