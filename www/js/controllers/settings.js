@@ -93,18 +93,25 @@ function settingsMob($scope, mobs, grazingplan) {
     $scope.groups.removeMob(index);
     $scope.groupEdit.splice(index,1);
   };
-  $scope.editGroup = function(index) {
+
+  $scope.onChange = function() {
     if(angular.isDefined(index)) { // editing existing Supplement
       $scope.groupEdit[index] = true;
-    } else { // editing new Supplement
+    }
+
+  };
+
+
+
+  $scope.addMob = function() {
       $scope.groupEdit.push(true);
       $scope.groups.addMob('',10,17);
-    }
   };
+
   $scope.saveGroup = function(index) {
     if(angular.isDefined(index)) { // saving existing Supplement
       $scope.groupEdit[index] = false;
-      Mobs.save();
+      mobs.save();
       grazingplan.init();
     }
   };
@@ -125,6 +132,7 @@ function settingsMob($scope, mobs, grazingplan) {
     $scope.modal.hide();
   };
   $scope.load();
+
 }
 
 angular

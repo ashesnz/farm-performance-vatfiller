@@ -7,13 +7,13 @@ angular.module('vatFiller')
                 displayDemand: '=',
                 onChange: '&onChange',
                 displayForm: '=',
-                editName: '=',
-                displayName: '='
+                displayMobList: '=',
+                editName: '='
             },
             templateUrl: 'templates/widgets/mobInfo.html'
         }
     })
-    .controller('MobInfoController', ['$scope', '$ionicModal', 'features', 'mobs', function($scope, $ionicModal, features, mobs) {
+    .controller('MobInfoController', ['$scope', '$ionicModal', 'features', 'grazingplan', 'mobs', function($scope, $ionicModal, features, grazingplan, mobs) {
       $scope.mobList = mobs.list;
 
       $ionicModal.fromTemplateUrl('mobInfoModal.html', {
@@ -98,6 +98,7 @@ angular.module('vatFiller')
 
         $scope.mobUpdate = function(selectedMob) {
           $scope.mob = selectedMob;
+          grazingplan.mob(selectedMob);
         }
         $scope.copyAndClose = function() {
             var DM = $scope.calculateIntake().DM;

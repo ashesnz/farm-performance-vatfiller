@@ -4,6 +4,7 @@ angular
     return {
       list: [],
       fromJSON: false,
+      summaryName: moment(Date.now()).format('MMMM Do YYYY, h:mm:ss a'),
       mob: gettersetter(mobs.list[mobs.default]),
       init: function(grazingType,mob) {
         var prefixes = [ undefined ];
@@ -18,17 +19,6 @@ angular
             this.grazNum = 2;
             this.days = 1;
             this.steps = 4;
-            break;
-          case '3in2Days':
-            prefixes = [ 'First', 'Second', 'Third' ];
-            this.grazNum = 3;
-            this.days = 2;
-            this.steps = 8;
-            break;
-          case 'winter':
-            this.grazNum = 1;
-            this.days = 1;
-            this.steps = 6;
             break;
           default:
             this.grazNum = 0;

@@ -155,6 +155,20 @@ angular
         if(window.applicationCache.status == window.applicationCache.UPDATEREADY) {
           onUpdateReady();
         }
+      },
+
+      bindToAllClicks: function() {
+
+     //   $('body').on('click', console.log('Hello'));
+
+        /*$('body').on('click', '[data-analytics-category]', function() {
+          console.log('Hello');
+         /!* var category = $(this).data('analyticsCategory'),
+            label = $(this).data('analyticsLabel');
+
+          _this.trackEvent(category, 'click', label);*!/
+        });*/
       }
+
     }
   }]);

@@ -2,11 +2,14 @@ angular.module('vatFiller')
     .directive('grazingSummary', function() {
         return {
             restrict: 'E',
-            scope: {},
+            scope: {
+              showSummaryName: '='
+            },
             templateUrl: 'templates/widgets/grazingSummary.html'
         }
     })
     .controller('GrazingSummaryController', ['$scope', 'grazingplan', function($scope, grazingplan) {
+
         $scope.grazingPlan = grazingplan;
         $scope.mob = function() { return grazingplan.mob(); };
 

@@ -10,6 +10,7 @@
     <div class="list" ng-show="noSummary">
       <div class="item item-divider">No summary available.</div>
     </div>
+
     <div ng-show="!noSummary">
       <!-- GROUP SELECTION -->
       <div class="list">
@@ -17,21 +18,17 @@
           Select summary for...
         </div>
         <div class="card">
-          <label class="item item-radio item-text-wrap" ng-repeat="mob in mobList">
-            <input type="radio" name="mobInput" ng-model="selectMob" ng-model-options="{getterSetter: true}" value="{{mob}}">
+          <label class="item item-radio item-text-wrap" ng-repeat="(key, value) in summaryList">
+            <input type="radio" name="summaryInput" ng-click="selectedSummary(key)" ng-model-options="{getterSetter: true}" value="{{key}}">
             <div class="item-content">
-              {{mob}} (updated on {{summaries[mob].date}})
+              {{key}}
             </div>
             <i class="radio-icon lic-tick"></i>
           </label>
         </div>
       </div>
-      <grazing-summary></grazing-summary>
+      <grazing-summary show-summary-name="false"></grazing-summary>
     </div>
 
-    <!--<div class="back-next-buttons">
-        <button class="button icon-left lic-back" ng-click="goBack()" ng-controller="BackCtrl"></button>
-        <a class="button icon-right lic-tick" href="#/app/home"></a>
-    </div>-->
   </ion-content>
 </ion-view>

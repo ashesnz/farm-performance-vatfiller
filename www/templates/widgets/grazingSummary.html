@@ -1,4 +1,5 @@
 <div ng-controller="GrazingSummaryController">
+
     <div class="item row assertive" ng-if="grazingPlan.missingFeed() > 0">
         <div class="col col-75">
             <div class="item-text-wrap item-icon-left">
@@ -19,11 +20,26 @@
         </div>
         <div class="col col-25 positive value-lic"><span format-num="-grazingPlan.missingFeed()"></span></div>
     </div>
-    <div class="list">
-        <div class="item item-divider">
-            Cows
+
+    <div class="list" ng-show="showSummaryName">
+      <div class="item item-divider item-input row">
+        <div class="col col-50 item-text-wrap">
+          Summary Name
         </div>
-        <mob-info mob="mob()" herd-demand="true" display-name="true"></mob-info>
+        <input class="value-lic" type="text" ng-value="grazingPlan.summaryName" ng-model="grazingPlan.summaryName" ng-model-options="{getterSetter: true}" ng-change="onChange()"
+               select-on-focus>
+      </div>
+    </div>
+
+    <div class="list card">
+      <div class="item item-divider item-input row">
+        <div class="col col-75 item-text-wrap">
+          Mob Name
+        </div>
+        <div class="col col-25 positive value-lic">{{mob().name()}}</div>
+      </div>
+
+      <mob-info mob="mob()" display-mob-list="false" herd-demand="true"></mob-info>
     </div>
 
 

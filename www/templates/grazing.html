@@ -12,13 +12,11 @@
   <ion-content has-subheader="true">
     <!-- MOB SELECTION -->
     <div class="list" ng-if="page.step == 'group'">
-      <mob-info mob="grazingPlan.mob()" display-demand="true" display-form="true"></mob-info>
+      <mob-info mob="grazingPlan.mob()" display-mob-list="true" display-demand="true" display-form="true"></mob-info>
     </div>
 
     <!-- PADDOCK SELECTION -->
     <div class="list" ng-if="page.step == 'paddock'">
-
-
         <div ng-repeat="feedPlan in grazingPlan.list" ng-show="paddockInput == 'multiple'">
           <paddock-info paddock-prefix="feedPlan.prefix" paddock="feedPlan.paddock" display-form="true"></paddock-info>
         </div>
@@ -51,7 +49,7 @@
     </div>
 
     <!-- SUMMARY -->
-    <grazing-summary ng-if="page.step == 'summary'"></grazing-summary>
+    <grazing-summary show-summary-name="true" ng-if="page.step == 'summary'"></grazing-summary>
 
     <div class="back-next-buttons">
         <a href="{{page.back()}}">

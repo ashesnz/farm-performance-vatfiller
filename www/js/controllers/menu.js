@@ -2,15 +2,19 @@ angular
   .module('vatFiller')
   .controller('MenuController', menu);
 
-menu.$inject = ['$scope', 'manifest', 'version', 'features'];
+menu.$inject = ['$scope', 'manifest', 'woopratracking', 'version', 'features'];
 
-function menu($scope, manifest, version, features) {
+function menu($scope, manifest, woopratracking, version, features) {
   var self = this;
   $scope.version = version;
   $scope.features = features;
 
   manifest.initListeners();
   manifest.checkStatus();
+  woopratracking.initWoopra();
+
+
+
   if(window.navigator.standalone) {
     angular.element(document.getElementsByTagName('body')).prepend('<div class="iPhoneTopBar"></div>');
     // fixes iOS issue with clicks on input fields...
@@ -19,6 +23,7 @@ function menu($scope, manifest, version, features) {
         e.stopImmediatePropagation();
       }
     });
+
   }
 /*  var login = localStorageService.get('login');
   // init UUID

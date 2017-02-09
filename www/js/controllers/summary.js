@@ -6,23 +6,21 @@ summary.$inject = ['$scope', 'summaries', 'grazingplan', 'feedometer'];
 
 function summary($scope, summaries, grazingplan, feedometer){
   var self = this;
-  $scope.summaries = summaries.get();
-  $scope.mobList = Object.keys($scope.summaries);
+  $scope.summaryList = summaries.get();
+  var selectedSummary = {};
+  var mobList = Object.keys($scope.summaryList);
+  if (mobList.length > 0) {
+    selectedSummary = mobList[0];
+  }
 
-  var selectedMob = $scope.mobList[0];
-  $scope.selectMob = function(val) {
-    if(angular.isUndefined(val)) {
-      return selectedMob;
-    } else {
-      selectedMob = val;
+  $scope.selectedSummary = function(val) {
+      selectedSummary = val;
       updateSummary();
-    }
-  };
-
+  }
 
   function updateSummary() {
-    if($scope.mobList.length > 0) {
-      grazingplan._fromJSON($scope.summaries[selectedMob].plan);
+    if($scope.summaryList[selectedSummary]) {
+      grazingplan._fromJSON($scope.summaryList[selectedSummary].plan);
       feedometer.refresh();
       $scope.noSummary = false;
     } else {

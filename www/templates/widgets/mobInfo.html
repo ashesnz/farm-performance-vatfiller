@@ -1,6 +1,6 @@
 <div ng-controller="MobInfoController as mobinfo">
 
-  <div class="item item-input row" ng-if="displayName === true || editName === true">
+  <div class="item item-input row" ng-if="editName === true">
     <div class="col col-33 item-text-wrap">Mob name</div>
     <div class="col col-67" ng-if="editName === true">
       <input type="text" ng-model="mob.name" ng-model-options="{getterSetter: true}" ng-change="onChange()" select-on-focus>
@@ -8,7 +8,7 @@
     <div class="col col-67 positive value-lic" ng-if="editName !== true">{{mob.name()}}</div>
   </div>
 
-  <div class="list card" ng-if="mobList.length > 0">
+  <div class="list card" ng-if="mobList.length > 0 && displayMobList == true">
     <div class="item item-divider">
       Mobs
     </div>
@@ -23,7 +23,6 @@
     </ion-list>
 
   </div>
-
 
   <div class="list card">
     <div class="item item-input row">
@@ -149,10 +148,6 @@
             <div class="col col-75 item-text-wrap">Total kg&nbsp;DM/day</div>
             <div class="col col-25 positive value-lic"><span format-num="calculateIntake().DM"></span></div>
           </div>
-<!--
-
-          <button class="button button-icon item-icon-right" ng-click="copyAndClose()">Save</button>
--->
 
         </div>
       </div>

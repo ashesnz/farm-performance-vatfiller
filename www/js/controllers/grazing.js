@@ -3,9 +3,9 @@ angular
   .controller('GrazingController', grazing);
 
 
-grazing.$inject = ['$scope', '$stateParams', '$location', 'features', 'mobs', 'grazingplan', 'paddock', 'savedcalendar', 'summaries'];
+grazing.$inject = ['$scope', '$stateParams', '$location', 'features', 'mobs', 'grazingplan', 'paddock', 'summaries', 'woopratracking'];
 
-function grazing($scope, $stateParams, $location, mobs, features, grazingplan, paddock, savedcalendar, summaries){
+function grazing($scope, $stateParams, $location, mobs, features, grazingplan, paddock, summaries, woopratracking){
   var self = this;
 
   var grazType =  $stateParams.grazType;
@@ -40,7 +40,7 @@ function grazing($scope, $stateParams, $location, mobs, features, grazingplan, p
       ][index];
     },
     save: function() {
-      savedcalendar.save();
+   //   woopratracking.trackDecision('Summary', summaries.get())
       summaries.save();
       $location.path('/app/home');
     }
@@ -68,16 +68,6 @@ function grazing($scope, $stateParams, $location, mobs, features, grazingplan, p
           plan.paddock.residual($scope.singlePaddock.residual());
         })
       };
-      break;
-    case '3in2Days':
-      $scope.page.title = "THREE IN TWO GRAZING";
-      $scope.paddockInput = 'single';
-
-      $scope.singlePaddock = new Paddock();
-      break;
-    case 'winter':
-      $scope.page.title = "WINTER GRAZING";
-      $scope.paddockInput = 'multiple';
       break;
     default:
       break;

@@ -1,33 +1,89 @@
 <ion-modal-view ng-controller="SettingsMobsController">
 
-    <ion-header-bar align-title="left" class="bar-positive">
-      <div class="buttons">
-        <button class="button-icon" ng-click="cancel()">Cancel</button>
-      </div>
-      <h1 class="title logo-text-body">{{modalTitle}}</h1>
-      <div class="buttons">
-        <button class="button-icon icon lic-save" ng-click="save()"></button>
-      </div>
-    </ion-header-bar>
+  <ion-header-bar align-title="left" class="bar-positive">
+    <div class="buttons">
+      <button class="button-icon" ng-click="cancel()">Cancel</button>
+    </div>
+    <h1 class="title logo-text-body">{{modalTitle}}</h1>
 
-    <ion-content class="list">
-        <div ng-repeat="group in groups.list">
-            <div class="item item-divider">
-                #{{$index+1}}. {{group.name()}} <span ng-if="$index == groups.default">(default)</span>
-            </div>
-            <!-- DISPLAY -->
-            <div class="item item-text-wrap item-2icons-right item-icon-right" ng-if="!groupEdit[$index]">
-                {{group.size()}} cows @ <span format-num="group.intake()"></span>&nbsp;kg&nbsp;DM/day
-                <i class="icon lic-edit-full calm" ng-click="editGroup($index)"></i>
-                <i class="icon lic-remove-full calm" ng-click="deleteGroup($index)"></i>
-            </div>
-            <!-- EDITION -->
-            <mob-info mob="group" display-form="true" edit-name="true" on-change="page.change()" ng-if="groupEdit[$index]"></mob-info>
+    <div class="buttons">
+      <button class="button-icon icon lic-save" ng-click="save()"></button>
+    </div>
+  </ion-header-bar>
 
+  <ion-content class="list">
+    <div ng-repeat="group in groups.list">
+
+      <div class="list card">
+        <div ng-if="group.name() !== ''">
+          <div class="item item-input row">
+            #{{$index+1}}.
+            <div class="col col-100">
+               <input type="text" ng-value="group.name()">
+            </div>
+          </div>
+          <!-- DISPLAY -->
+          <div class="item item-text-wrap item-2icons-right item-icon-right" ng-if="!groupEdit[$index]">
+            <span class="item item-input row">
+              <span class="col col-20">
+                  <input type="number"  ng-value="group.size()" step="1" ng-min="0" >
+              </span> cows @
+
+              <span class="col col-20">
+                  <input type="number" ng-value="group.intake()" step="1" ng-min="0" ng-model-options="{getterSetter: true}" select-on-focus>
+              </span>&nbsp;kg&nbsp;DM/day
+            </span>
+
+            <i class="icon lic-remove-full calm" ng-click="deleteGroup($index)"></i>
+          </div>
         </div>
-        <div class="item item-icon-right" ng-click="editGroup()">
-            Add a mob
-            <i class="icon lic-add-full calm"></i>
+        <div ng-if="group.name() === ''">
+          <div class="item item-input row">
+            <div class="col col-33 item-text-wrap">Mob name</div>
+            <div class="col col-67">
+              <input type="text" ng-model="mob.name" ng-model-options="{getterSetter: true}" ng-change="onChange()"
+                     select-on-focus>
+            </div>
+          </div>
+
+          <div class="item item-input row">
+            <div class="col col-75 item-text-wrap">Number of cows</div>
+            <div class="col col-25">
+              <input type="number" ng-model="mob.size" ng-model-options="{getterSetter: true}" ng-change="onChange()"
+                     select-on-focus>
+            </div>
+            <div class="col col-25 positive value-lic"><span format-num="mob.size()"></span></div>
+          </div>
+
+          <div class="item item-input row">
+            <div class="col col-75">
+              <div class="item-text-wrap item-icon-right">
+                <i class="icon calm lic-calc" ng-click="openModal()"></i>
+                Cow daily intake
+                <span class="input-unit">kg&nbsp;DM</span>
+              </div>
+            </div>
+            <div class="col col-25">
+              <input type="number" ng-model="mob.intake" ng-model-options="{getterSetter: true}" ng-change="onChange()"
+                     select-on-focus>
+            </div>
+
+            <div class="col col-25 positive value-lic"><span format-num="mob.intake()"></span></div>
+          </div>
         </div>
-    </ion-content>
+
+      </div>
+
+    </div>
+
+  </ion-content>
+  <ion-footer-bar class="bar-assertive">
+
+    <div class="row">
+      <div class="col text-right">
+        <button class="button-icon icon lic-add-full calm" ng-click="addMob()">Add a Mob</button>
+      </div>
+    </div>
+  </ion-footer-bar>
+
 </ion-modal-view>

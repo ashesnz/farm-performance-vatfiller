@@ -12,7 +12,7 @@ angular.module('vatFiller')
     return {
       save: function() {
         var d = new Date();
-        summaries[grazingplan.mob().name()] = {
+        summaries[grazingplan.summaryName] = {
           plan: grazingplan._toJSON(),
           date: d.toLocaleDateString()
         };
