@@ -49,6 +49,7 @@ angular.module('vatFiller', ['ionic', 'vatFiller.controllers', 'ionic-material']
 
    .state('app.summary', {
           url: '/summary',
+          cache: false,
           views: {
             'menuContent': {
               templateUrl: 'templates/summary.html',

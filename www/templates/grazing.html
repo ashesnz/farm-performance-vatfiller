@@ -58,7 +58,7 @@
         <a href="{{page.next()}}">
           <button class="button button-icon icon lic-next" ng-if="page.step != 'summary'"></button>
         </a>
-        <button class="button button-icon icon lic-tick" ng-click="page.save()" ng-if="page.step == 'summary'"></button>
+        <button class="button button-icon icon lic-tick" ng-click="page.saveGrazingPlan()" ng-if="page.step == 'summary'"></button>
       </div>
   </ion-content>
   <steps-nav steps="navSteps" ng-if="features.widgets.stepsNav"></steps-nav>

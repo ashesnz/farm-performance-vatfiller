@@ -2,24 +2,25 @@ angular
   .module('vatFiller')
   .controller('SummaryController', summary);
 
-summary.$inject = ['$scope', 'summaries', 'grazingplan', 'feedometer'];
+summary.$inject = ['$scope', 'grazingplan', 'feedometer'];
 
-function summary($scope, summaries, grazingplan, feedometer){
-  var self = this;
-  $scope.summaryList = summaries.get();
-  var selectedSummary = {};
-  if ($scope.summaryList.length > 0) {
-    selectedSummary = $scope.summaryList[0];
+function summary($scope, grazingplan, feedometer){
+
+  $scope.summaryList = JSON.parse(window.localStorage.getItem('summaries'));
+  if ($scope.summaryList && $scope.summaryList.length > 0) {
+    $scope.summaryList.reverse()
+    $scope.selectedSummary = $scope.summaryList[0];
   }
 
-  $scope.selectedSummary = function(val) {
-      selectedSummary = val;
+  $scope.selection = function(val) {
+    $scope.selectedSummary = val;
       updateSummary();
   }
 
   function updateSummary() {
-    if(selectedSummary) {
-      var summaryPlan = JSON.parse(selectedSummary.plan);
+
+    if($scope.selectedSummary) {
+      var summaryPlan = JSON.parse($scope.selectedSummary.plan);
       grazingplan._fromJSON(summaryPlan);
       feedometer.refresh();
       $scope.noSummary = false;

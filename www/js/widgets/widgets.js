@@ -25,20 +25,7 @@ angular.module('vatFiller')
             templateUrl: 'templates/widgets/steps.html'
         }
     })
-    .directive('selectOnFocus', function () {
-        return {
-            restrict: 'A',
-            link: function (scope, element, attrs) {
-                element.on('focus', function () {
-                    var input_field = this;
-                    setTimeout(function() {
-                        input_field.select()
-                        input_field.setSelectionRange(0,99);
-                    }, 10);
-                });
-            }
-        };
-    })
+
     .directive('menuCloseKeepHistory', ['$ionicHistory', function($ionicHistory) {
         return {
             restrict: 'AC',

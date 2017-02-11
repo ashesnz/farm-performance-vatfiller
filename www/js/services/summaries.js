@@ -12,7 +12,7 @@ angular.module('vatFiller')
 
     return {
       save: function() {
-        var summaries = get();
+        var summaries = JSON.parse(window.localStorage.getItem('summaries'));;
         if (!summaries) {
           summaries = [];
         }
@@ -22,16 +22,9 @@ angular.module('vatFiller')
           name: grazingplan.summaryName
         });
 
-
+        localStorage.setItem('summaries', JSON.stringify(summaries));
 
        // woopratracking.trackDecision('Summary', summaries);
-      },
-      get: function() {
-        return JSON.parse(window.localStorage.getItem('summaries'));
-      },
-
-      set: function(value) {
-        localStorage.setItem('summaries', JSON.stringify(value));
       }
     };
 

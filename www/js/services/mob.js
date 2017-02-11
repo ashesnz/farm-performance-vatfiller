@@ -13,7 +13,7 @@ angular.module('vatFiller')
       /**
        * Id of the Mob
        */
-      this.id = (options && options.hasOwnProperty('id')) ? options.id : 'dsads';
+      this.id = (options && options.hasOwnProperty('id')) ? options.id : 'default';
       /**
        * Getter-setter for the 'name' attribute
        * @function

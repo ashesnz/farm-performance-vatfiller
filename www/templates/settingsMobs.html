@@ -13,8 +13,7 @@
   </ion-nav-buttons>
 
   <ion-content class="list">
-    <div ng-repeat="group in groups.list">
-
+    <div ng-repeat="group in groups.list track by $index">
       <div class="list card">
 
         <div class="item item-input row">
@@ -24,7 +23,7 @@
           </div>
         </div>
         <!-- DISPLAY -->
-        <div class="item item-text-wrap item-2icons-right item-icon-right" ng-if="!groupEdit[$index]">
+        <div class="item item-text-wrap item-2icons-right item-icon-right">
             <span class="item item-input row">
               <span class="col col-20">
                   <input type="number" ng-model="group.size"  ng-value="group.size()" step="1" ng-min="0" ng-model-options="{getterSetter: true}">
@@ -35,10 +34,8 @@
               </span>&nbsp;kg&nbsp;DM/day
             </span>
 
-            <i class="icon lic-remove-full calm" ng-click="deleteMob($index)"></i>
+            <i ng-if="$index != 0"  class="icon lic-remove-full calm" ng-click="deleteMob($index)"></i>
           </div>
-
-
 
       </div>
 

@@ -1,9 +1,9 @@
-<ion-view ng-controller="SummaryController" align-title="left" title="Summary">
+<ion-view ng-controller="SummaryController as summary">
   <ion-nav-buttons side="left">
     <button menu-toggle="left" class="button-icon icon lic-menu"></button>
   </ion-nav-buttons>
   <ion-nav-title>
-    <i class="icon lic-logo"></i>Last summary per Mob
+    <i class="icon lic-logo"></i>Summary per Mob
   </ion-nav-title>
   <feedometer ng-show="!noSummary"></feedometer>
   <ion-content>
@@ -18,13 +18,11 @@
           Select summary for...
         </div>
         <div class="card">
-          <label class="item item-radio item-text-wrap" ng-repeat="summary in summaryList">
-            <input type="radio" name="summaryInput" ng-click="selectedSummary(summary)" ng-model-options="{getterSetter: true}" value="{{summary.name}}">
-            <div class="item-content">
-              {{summary.name}}
-            </div>
-            <i class="radio-icon lic-tick"></i>
-          </label>
+
+          <ion-list class="item item-text-wrap" ng-repeat="summary in summaryList">
+            <ion-radio type="radio" ng-model="$parent.selectedSummary" ng-click="selection(summary)" ng-model-options="{getterSetter: true}" ng-value="summary"/>{{summary.name}}
+          </ion-list>
+
         </div>
       </div>
       <grazing-summary show-summary-name="false"></grazing-summary>

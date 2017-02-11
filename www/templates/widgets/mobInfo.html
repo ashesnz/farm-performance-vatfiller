@@ -3,7 +3,7 @@
   <div class="item item-input row" ng-if="editName === true">
     <div class="col col-33 item-text-wrap">Mob name</div>
     <div class="col col-67" ng-if="editName === true">
-      <input type="text" ng-model="mob.name" ng-model-options="{getterSetter: true}" ng-change="onChange()" select-on-focus>
+      <input type="text" ng-model="mob.name" ng-model-options="{getterSetter: true}" ng-change="onChange()">
     </div>
     <div class="col col-67 positive value-lic" ng-if="editName !== true">{{mob.name()}}</div>
   </div>
@@ -28,8 +28,7 @@
     <div class="item item-input row">
       <div class="col col-75 item-text-wrap">Number of cows</div>
       <div class="col col-25" ng-if="displayForm">
-        <input type="number" ng-model="mob.size" ng-model-options="{getterSetter: true}" ng-change="onChange()"
-               select-on-focus>
+        <input type="number" ng-model="mob.size" ng-model-options="{getterSetter: true}" ng-change="onChange()">
       </div>
       <div class="col col-25 positive value-lic" ng-if="!displayForm"><span format-num="mob.size()"></span></div>
     </div>
@@ -46,8 +45,7 @@
         </div>
       </div>
       <div class="col col-25" ng-if="displayForm">
-        <input type="number" ng-model="mob.intake" ng-model-options="{getterSetter: true}" ng-change="onChange()"
-               select-on-focus>
+        <input type="number" ng-model="mob.intake" ng-model-options="{getterSetter: true}" ng-change="onChange()" ng-min="0" ng-max="99">
       </div>
       <div class="col col-25 positive value-lic" ng-if="!displayForm"><span format-num="mob.intake()"></span></div>
     </div>
@@ -92,7 +90,7 @@
               <span class="input-unit">kg&nbsp;MS/day</span>
             </div>
             <div class="col col-25">
-              <input type="number" ng-model="mob.model.milkProduction" select-on-focus>
+              <input type="number" ng-model="mob.model.milkProduction">
             </div>
           </div>
           <div class="item item-input row">
@@ -101,7 +99,7 @@
               <span class="input-unit">km/day</span>
             </div>
             <div class="col col-25">
-              <input type="number" ng-model="mob.model.walkingDistance" select-on-focus>
+              <input type="number" ng-model="mob.model.walkingDistance">
             </div>
           </div>
           <label class="item item-input item-select">
@@ -128,7 +126,7 @@
               <span class="input-unit">kg/day</span>
             </div>
             <div class="col col-25">
-              <input type="number" ng-model="mob.model.weightGain" select-on-focus>
+              <input type="number" ng-model="mob.model.weightGain">
             </div>
           </div>
         </div>

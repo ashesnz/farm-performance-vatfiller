@@ -39,8 +39,7 @@ function grazing($scope, $stateParams, $location, mobs, features, grazingplan, p
         'Summary'
       ][index];
     },
-    save: function() {
-
+    saveGrazingPlan: function() {
       summaries.save();
       $location.path('/app/home');
     }
