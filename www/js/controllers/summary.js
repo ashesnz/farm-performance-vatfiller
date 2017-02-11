@@ -8,9 +8,8 @@ function summary($scope, summaries, grazingplan, feedometer){
   var self = this;
   $scope.summaryList = summaries.get();
   var selectedSummary = {};
-  var mobList = Object.keys($scope.summaryList);
-  if (mobList.length > 0) {
-    selectedSummary = mobList[0];
+  if ($scope.summaryList.length > 0) {
+    selectedSummary = $scope.summaryList[0];
   }
 
   $scope.selectedSummary = function(val) {
@@ -19,8 +18,9 @@ function summary($scope, summaries, grazingplan, feedometer){
   }
 
   function updateSummary() {
-    if($scope.summaryList[selectedSummary]) {
-      grazingplan._fromJSON($scope.summaryList[selectedSummary].plan);
+    if(selectedSummary) {
+      var summaryPlan = JSON.parse(selectedSummary.plan);
+      grazingplan._fromJSON(summaryPlan);
       feedometer.refresh();
       $scope.noSummary = false;
     } else {

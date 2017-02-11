@@ -1,32 +1,42 @@
-<ion-modal-view ng-controller="SettingsWastageController">
-    <ion-header-bar align-title="left" class="bar-positive">
-      <div class="buttons">
-        <button class="button-icon" ng-click="cancel()">Cancel</button>
+<ion-view ng-controller="SettingsWastageController">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button-icon icon lic-menu"></button>
+  </ion-nav-buttons>
+  <ion-nav-title>
+    {{settingsTitle}}
+  </ion-nav-title>
+  <ion-nav-buttons side="right">
+    <a class="button button-icon button-clear" href="#/app/settings">
+      Back
+    </a>
+  </ion-nav-buttons>
+  <ion-content class="list">
+    <div class="item item-input row" ng-if="features.widgets.wastage">
+      <div class="input-label col col-75 item-text-wrap">
+        Pasture waste
+        <span class="input-unit">%</span>
       </div>
-      <h1 class="title logo-text-body">{{modalTitle}}</h1>
-      <div class="buttons">
-        <button class="button-icon icon lic-save" ng-click="save()"></button>
+      <div class="col col-25">
+        <input type="number" ng-model="wastage.pasture" ng-model-options="{getterSetter: true}"
+               ng-change="page.change()" select-on-focus>
       </div>
-    </ion-header-bar>
-    <ion-content class="list">
-        <div class="item item-input row" ng-if="features.widgets.wastage">
-            <div class="input-label col col-75 item-text-wrap">
-                Pasture waste
-                <span class="input-unit">%</span>
-            </div>
-            <div class="col col-25">
-                <input type="number" ng-model="wastage.pasture" ng-model-options="{getterSetter: true}" ng-change="page.change()" select-on-focus>
-            </div>
-        </div>
-        <div class="item item-input row" ng-if="features.widgets.wastage">
-            <div class="input-label col col-75 item-text-wrap">
-                Supplement waste
-                <span class="input-unit">%</span>
-            </div>
-            <div class="col col-25">
-                <input type="number" ng-model="wastage.supplement" ng-model-options="{getterSetter: true}" ng-change="page.change()" select-on-focus>
-            </div>
-        </div>
+    </div>
+    <div class="item item-input row" ng-if="features.widgets.wastage">
+      <div class="input-label col col-75 item-text-wrap">
+        Supplement waste
+        <span class="input-unit">%</span>
+      </div>
+      <div class="col col-25">
+        <input type="number" ng-model="wastage.supplement" ng-model-options="{getterSetter: true}"
+               ng-change="page.change()" select-on-focus>
+      </div>
+    </div>
 
-    </ion-content>
-</ion-modal-view>
+    <div class="row">
+      <div class="col text-right">
+        <button class="button button-icon icon lic-save" ng-click="saveWastage()">Save</button>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>

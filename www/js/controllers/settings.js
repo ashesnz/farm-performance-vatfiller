@@ -3,76 +3,17 @@ angular
   .controller('SettingsController', settings)
 
 
-settings.$inject = ['$scope', '$ionicModal', 'grazingplan'];
+settings.$inject = ['$scope', 'grazingplan'];
 
-function settings($scope, $ionicModal, grazingplan){
+function settings($scope, grazingplan){
   var self = this;
 
   $scope.page = {
-    title: "SETTINGS",
-    back: function() { $scope.modal.hide(); },
-    changed: false,
-    change: function() {
-      this.changed = true;
-    }
+    settingsTitle: "SETTINGS"
   };
-
 
   grazingplan.init(); // Make sure that the GrazingPlan is initialised (because Mobs will be reinitialised anyway)
 
-  // MODAL BOXES
-  var modalMobs, modalPaddock, modalWastage, modalSupplements;
-  $ionicModal.fromTemplateUrl('templates/settingsMobs.html', {
-    scope: $scope,
-    animation: 'slide-in-up'
-  }).then(function(modal) {
-    modalMobs = modal;
-  });
-  $scope.openModalMobs = function() {
-    $scope.modal = modalMobs;
-    $scope.modal.show();
-  };
-
-  $ionicModal.fromTemplateUrl('templates/settingsPaddock.html', {
-    scope: $scope,
-    animation: 'slide-in-up'
-  }).then(function(modal) {
-    modalPaddock = modal;
-  });
-  $scope.openModalPaddock = function() {
-    $scope.modal = modalPaddock;
-    $scope.modal.show();
-  };
-
-  $ionicModal.fromTemplateUrl('templates/settingsWastage.html', {
-    scope: $scope,
-    animation: 'slide-in-up'
-  }).then(function(modal) {
-    modalWastage = modal;
-  });
-  $scope.openModalWastage = function() {
-    $scope.modal = modalWastage;
-    $scope.modal.show();
-  };
-
-  $ionicModal.fromTemplateUrl('templates/settingsSupplements.html', {
-    scope: $scope,
-    animation: 'slide-in-up'
-  }).then(function(modal) {
-    modalSupplements = modal;
-  });
-  $scope.openModalSupplements = function() {
-    $scope.modal = modalSupplements;
-    $scope.modal.show();
-  };
-
-  //Cleanup the modal when we're done with it!
-  $scope.$on('$destroy', function() {
-    modalMobs.remove();
-    modalPaddock.remove();
-    modalWastage.remove();
-    modalSupplements.remove();
-  });
 }
 
 angular
@@ -82,35 +23,31 @@ angular
 settingsMob.$inject = ['$scope', 'mobs', 'grazingplan'];
 
 function settingsMob($scope, mobs, grazingplan) {
-  $scope.modalTitle = "SETTINGS: Mobs";
-  $scope.save = function() {
+  $scope.settingsTitle = "SETTINGS: Mobs";
+  $scope.addMobForm = false;
+  $scope.saveMobs = function() {
+
+    $scope.addMobForm = false;
+    if ($scope.addedMob) {
+      $scope.groups.list.push($scope.addedMob);
+    }
     mobs.save();
     grazingplan.init();
-    $scope.modal.hide();
   };
   /* GROUPS */
-  $scope.deleteGroup = function(index) {
+  $scope.deleteMob = function(index) {
     $scope.groups.removeMob(index);
-    $scope.groupEdit.splice(index,1);
+    mobs.save();
   };
-
-  $scope.onChange = function() {
-    if(angular.isDefined(index)) { // editing existing Supplement
-      $scope.groupEdit[index] = true;
-    }
-
-  };
-
 
 
   $scope.addMob = function() {
-      $scope.groupEdit.push(true);
-      $scope.groups.addMob('',10,17);
+      $scope.addMobForm = true;
+      $scope.addedMob = $scope.groups.addMob('',10,17);
   };
 
   $scope.saveGroup = function(index) {
     if(angular.isDefined(index)) { // saving existing Supplement
-      $scope.groupEdit[index] = false;
       mobs.save();
       grazingplan.init();
     }
@@ -122,15 +59,10 @@ function settingsMob($scope, mobs, grazingplan) {
   $scope.load = function() {
     mobs.load();
     $scope.groups = mobs;
-    $scope.groupEdit = [];
-    $scope.groups.list.forEach(function() {
-      $scope.groupEdit.push(false);
-    });
+
 
   };
-  $scope.cancel = function() {
-    $scope.modal.hide();
-  };
+
   $scope.load();
 
 }
@@ -142,11 +74,11 @@ angular
 settingsPaddock.$inject = ['$scope', 'paddock', 'grazingplan'];
 
 function settingsPaddock($scope, paddock, grazingplan) {
-  $scope.modalTitle = "SETTINGS: Paddock";
-  $scope.save = function() {
+  $scope.settingsTitle = "SETTINGS: Paddock";
+  $scope.savePaddock = function() {
     $scope.paddock.saveAsDefault();
     grazingplan.init();
-    $scope.modal.hide();
+
   };
 
   $scope.load = function() {
@@ -173,11 +105,11 @@ angular
 settingsWastage.$inject = ['$scope', 'paddock', 'grazingplan'];
 
 function settingsWastage($scope, paddock, grazingplan) {
-  $scope.modalTitle = "SETTINGS: Paddock";
-  $scope.save = function() {
+  $scope.settingsTitle = "SETTINGS: Paddock";
+  $scope.saveWastage = function() {
     $scope.paddock.saveAsDefault();
     grazingplan.init();
-    $scope.modal.hide();
+
   };
   $scope.load = function() {
     $scope.paddock = new paddock();
@@ -187,10 +119,6 @@ function settingsWastage($scope, paddock, grazingplan) {
   $scope.cancel = function() { $scope.load(); };
 
   $scope.defaultWastage = function() {
-
-  }
-
-  $scope.saveWastageSettings = function() {
 
   }
 
@@ -206,8 +134,9 @@ angular
 settingsSupplements.$inject = ['$scope', 'supplements', 'supplement', 'grazingplan'];
 
 function settingsSupplements($scope, supplements, supplement, grazingplan) {
-  $scope.modalTitle = "SETTINGS: Supplements";
-  $scope.save = function() {
+  $scope.settingsTitle = "SETTINGS: Supplements";
+
+  $scope.saveSupplements = function() {
     $scope.predefinedList.forEach(function(s) {
       if(s.selected) {
         $scope.supplements.addSupplement(s.name(), s.quality(), s.propDM(), s.density());
@@ -218,7 +147,7 @@ function settingsSupplements($scope, supplements, supplement, grazingplan) {
     });
     $scope.supplements.saveAsDefault();
     grazingplan.init();
-    $scope.modal.hide();
+
   };
 
   $scope.listlength = 20;

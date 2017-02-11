@@ -1,6 +1,7 @@
 angular.module('vatFiller')
   .factory('summaries', ['grazingplan', 'woopratracking', function(grazingplan, woopratracking) {
     var summaries={};
+
     var load = function() {
       summaries = JSON.parse(window.localStorage.getItem('summaries'));
       if(summaries == undefined) { // if summaries variable do not exist
@@ -11,19 +12,26 @@ angular.module('vatFiller')
 
     return {
       save: function() {
-        var d = new Date();
+        var summaries = get();
+        if (!summaries) {
+          summaries = [];
+        }
 
-        var latestsummary = summaries[grazingplan.summaryName] = {
+        summaries.push({
           plan: JSON.stringify(grazingplan._toJSON()),
-          date: d.toLocaleDateString()
-        };
+          name: grazingplan.summaryName
+        });
 
-        localStorage.setItem('summaries', JSON.stringify(latestsummary));
 
-        woopratracking.trackDecision('Summary', latestsummary);
+
+       // woopratracking.trackDecision('Summary', summaries);
       },
       get: function() {
-        return summaries;
+        return JSON.parse(window.localStorage.getItem('summaries'));
+      },
+
+      set: function(value) {
+        localStorage.setItem('summaries', JSON.stringify(value));
       }
     };
 

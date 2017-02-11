@@ -1,29 +1,39 @@
-<ion-modal-view ng-controller="SettingsSupplementsController">
-    <ion-header-bar align-title="left" class="bar-positive">
-      <div class="buttons">
-        <button class="button-icon" ng-click="cancel()">Cancel</button>
-      </div>
-      <h1 class="title logo-text-body">{{modalTitle}}</h1>
-      <div class="buttons">
-        <button class="button-icon icon lic-save" ng-click="save()"></button>
-      </div>
-    </ion-header-bar>
-    <ion-content class="list">
+<ion-view ng-controller="SettingsSupplementsController">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button-icon icon lic-menu"></button>
+  </ion-nav-buttons>
+  <ion-nav-title>
+    {{settingsTitle}}
+  </ion-nav-title>
+  <ion-nav-buttons side="right">
+    <a class="button button-icon button-clear" href="#/app/settings">
+      Back
+    </a>
+  </ion-nav-buttons>
+  <ion-content class="list">
 
-      <div class="bar bar-header item-input-inset">
-        <input type="text" placeholder=" Search Supplements..." ng-model="searchSupplement" class="search-input" />
-      </div>
-      <ion-list>
-        <ion-item  class="item item-checkbox" type="item-text-wrap" ng-repeat="supplement in predefinedList | filter:searchSupplement | limitTo:listlength">
-          <label class="checkbox">
-            <input type="checkbox" ng-model="supplement.selected" ng-click="page.change()">
-          </label>
-          {{supplement.name()}}
-        </ion-item>
-      </ion-list>
-      <ion-infinite-scroll ng-if="listlength<=predefinedList.length"
-                           on-infinite="loadMore()" distance="3%">
-      </ion-infinite-scroll>
-    </ion-content>
+    <div class="bar bar-header item-input-inset">
+      <input type="text" placeholder=" Search Supplements..." ng-model="searchSupplement" class="search-input"/>
+    </div>
+    <ion-list>
+      <ion-item class="item item-checkbox" type="item-text-wrap"
+                ng-repeat="supplement in predefinedList | filter:searchSupplement | limitTo:listlength">
+        <label class="checkbox">
+          <input type="checkbox" ng-model="supplement.selected" ng-click="page.change()">
+        </label>
+        {{supplement.name()}}
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll ng-if="listlength<=predefinedList.length"
+                         on-infinite="loadMore()" distance="3%">
+    </ion-infinite-scroll>
 
-</ion-modal-view>
+    <div class="row">
+      <div class="col text-right">
+        <button class="button button-icon icon lic-save" ng-click="saveSupplements()">Save</button>
+      </div>
+    </div>
+
+  </ion-content>
+
+</ion-view>

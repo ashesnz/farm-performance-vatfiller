@@ -53,7 +53,6 @@ angular.module('vatFiller')
 
     service.addMob = function(name,size,intake,options) {
       var aMob = new mob(name,size,intake,options);
-      this.list.push(aMob);
       return aMob;
     };
 

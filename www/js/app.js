@@ -67,6 +67,46 @@ angular.module('vatFiller', ['ionic', 'vatFiller.controllers', 'ionic-material']
       }
     })
 
+    .state('app.settingsMobs', {
+      url: "/settingsMobs",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/settingsMobs.html",
+          controller: "SettingsMobsController"
+        }
+      }
+    })
+
+    .state('app.settingsPaddocks', {
+      url: "/settingsPaddocks",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/settingsPaddock.html",
+          controller: "SettingsPaddockController"
+        }
+      }
+    })
+
+    .state('app.settingsSupplements', {
+      url: "/settingsSupplements",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/settingsSupplements.html",
+          controller: "SettingsSupplementsController"
+        }
+      }
+    })
+
+    .state('app.settingsWastage', {
+      url: "/settingsWastage",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/settingsWastage.html",
+          controller: "SettingsWastageController"
+        }
+      }
+    })
+
     .state('app.stepgrazing', {
       url: "/grazingSteps/:grazType/:step",
       views: {

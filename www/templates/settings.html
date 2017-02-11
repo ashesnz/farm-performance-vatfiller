@@ -1,7 +1,7 @@
 <ion-view ng-controller="SettingsController as settings">
-    <ion-nav-buttons side="left">
-        <button menu-toggle="left" class="button-icon icon lic-menu"></button>
-    </ion-nav-buttons>
+  <ion-nav-buttons side="left">
+      <button menu-toggle="left" class="button-icon icon lic-menu"></button>
+  </ion-nav-buttons>
 
   <ion-nav-buttons side="right">
     <a class="button button-icon button-clear" href="#/app/home" >
@@ -17,28 +17,36 @@
     <ion-content>
         <div class="list card">
             <!-- GROUPS -->
-            <div class="item calm-bg item-icon-right" ng-click="openModalMobs()">
-                MOBS
-                <i class="icon lic-settings"></i>
-            </div>
+            <a href="/#/app/settingsMobs">
+              <div class="item calm-bg item-icon-right">
+                  MOBS
+                  <i class="icon ion-chevron-right"></i>
+              </div>
+            </a>
 
             <!-- PADDOCKS -->
-            <div class="item calm-bg item-icon-right" ng-click="openModalPaddock()">
-                DEFAULT PADDOCK SETTINGS
-                <i class="icon lic-settings"></i>
-            </div>
+            <a href="/#/app/settingsPaddocks">
+              <div class="item calm-bg item-icon-right">
+                  DEFAULT PADDOCK SETTINGS
+                  <i class="icon ion-chevron-right"></i>
+              </div>
+            </a>
 
             <!-- WASTAGE -->
-            <div class="item calm-bg item-icon-right" ng-if="features.widgets.wastage" ng-click="openModalWastage()">
-                WASTAGE
-                <i class="icon lic-settings"></i>
-            </div>
+            <a href="/#/app/settingsWastage">
+              <div class="item calm-bg item-icon-right" ng-if="features.widgets.wastage">
+                  WASTAGE
+                  <i class="icon ion-chevron-right"></i>
+              </div>
+            </a>
 
             <!-- SUPPLEMENTS -->
-            <div class="item calm-bg item-icon-right" ng-click="openModalSupplements()">
-                SUPPLEMENTS
-                <i class="icon lic-settings"></i>
-            </div>
+            <a href="/#/app/settingsSupplements">
+              <div class="item calm-bg item-icon-right">
+                  SUPPLEMENTS
+                  <i class="icon ion-chevron-right"></i>
+              </div>
+            </a>
         </div>
 
     </ion-content>

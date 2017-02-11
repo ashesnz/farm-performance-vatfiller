@@ -18,10 +18,10 @@
           Select summary for...
         </div>
         <div class="card">
-          <label class="item item-radio item-text-wrap" ng-repeat="(key, value) in summaryList">
-            <input type="radio" name="summaryInput" ng-click="selectedSummary(key)" ng-model-options="{getterSetter: true}" value="{{key}}">
+          <label class="item item-radio item-text-wrap" ng-repeat="summary in summaryList">
+            <input type="radio" name="summaryInput" ng-click="selectedSummary(summary)" ng-model-options="{getterSetter: true}" value="{{summary.name}}">
             <div class="item-content">
-              {{key}}
+              {{summary.name}}
             </div>
             <i class="radio-icon lic-tick"></i>
           </label>

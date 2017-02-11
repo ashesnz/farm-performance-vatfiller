@@ -47,6 +47,10 @@ html .lic-style,
     font-size: 16px;
 }
 
+.lic-style a {
+  text-decoration: none;
+}
+
 /* Removing border lines for .item except if child of a .card */
 .lic-style .list .item {
     border: none;
@@ -299,7 +303,7 @@ ion-side-menu, ion-side-menu.menu {
 }
 .lic-style .scroll {
     padding-top: 20px;
-    padding-bottom: 100px;
+    padding-bottom: 20px;
 }
 
 /* Tabs */
