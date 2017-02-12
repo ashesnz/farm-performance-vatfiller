@@ -24,7 +24,7 @@
 
 
     <!-- SUPPLEMENT SELECTION -->
-    <div class="list" ng-if="page.step == 'supplements'">
+    <div ng-if="page.step == 'supplements'">
       <div class="item item-input row" ng-if="grazingPlan.missingFeed() >= 0">
         <div class="input-label col col-75 item-text-wrap">
           Feed missing
@@ -40,12 +40,17 @@
         <div class="col col-25 positive value-lic"><span format-num="-grazingPlan.missingFeedPerCow()"></span></div>
       </div>
       <!-- list all the paddocks (always) -->
-      <div ng-repeat="feedPlan in grazingPlan.list">
-        <div class="item item-divider">
-          {{feedPlan.prefix}} Supplements
-        </div>
-        <supplement-list feed-plan-index="$index"></supplement-list>
+
+        <div ng-repeat="feedPlan in grazingPlan.list">
+          <div class="list card">
+            <div class="item item-divider">
+              {{feedPlan.prefix}} Supplements
+            </div>
+            <supplement-list feed-plan-index="$index"></supplement-list>
+          </div>
+
       </div>
+
     </div>
 
     <!-- SUMMARY -->

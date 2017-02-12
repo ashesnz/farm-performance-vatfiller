@@ -25,7 +25,7 @@ settingsMob.$inject = ['$scope', 'mobs', 'grazingplan'];
 function settingsMob($scope, mobs, grazingplan) {
   $scope.settingsTitle = "SETTINGS: Mobs";
   $scope.addMobForm = false;
-  $scope.saveMobs = function() {
+  $scope.saveMob = function() {
 
     $scope.addMobForm = false;
     if ($scope.addedMob) {

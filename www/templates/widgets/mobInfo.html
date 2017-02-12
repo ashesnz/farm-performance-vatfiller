@@ -24,40 +24,37 @@
 
   </div>
 
-  <div class="list card">
-    <div class="item item-input row">
-      <div class="col col-75 item-text-wrap">Number of cows</div>
-      <div class="col col-25" ng-if="displayForm">
-        <input type="number" ng-model="mob.size" ng-model-options="{getterSetter: true}" ng-change="onChange()">
-      </div>
-      <div class="col col-25 positive value-lic" ng-if="!displayForm"><span format-num="mob.size()"></span></div>
+  <div class="item item-input row">
+    <div class="col col-75 item-text-wrap">Number of cows</div>
+    <div class="col col-25" ng-if="displayForm">
+      <input type="number" ng-model="mob.size" ng-model-options="{getterSetter: true}" ng-change="onChange()">
     </div>
-    <div class="item item-input row">
-      <div class="col col-75">
-        <div class="item-text-wrap item-icon-right" ng-if="enableIntakeCalculator && displayForm">
-          <i class="icon calm lic-calc" ng-click="openModal()" ng-if="enableIntakeCalculator"></i>
-          Cow daily intake
-          <span class="input-unit">kg&nbsp;DM</span>
-        </div>
-        <div class="item-text-wrap" ng-if="!enableIntakeCalculator || !displayForm">
-          Cow daily intake
-          <span class="input-unit">kg&nbsp;DM</span>
-        </div>
+    <div class="col col-25 positive value-lic" ng-if="!displayForm"><span format-num="mob.size()"></span></div>
+  </div>
+  <div class="item item-input row">
+    <div class="col col-75">
+      <div class="item-text-wrap item-icon-right" ng-if="enableIntakeCalculator && displayForm">
+        <i class="icon calm lic-calc" ng-click="openModal()" ng-if="enableIntakeCalculator"></i>
+        Cow daily intake
+        <span class="input-unit">kg&nbsp;DM</span>
       </div>
-      <div class="col col-25" ng-if="displayForm">
-        <input type="number" ng-model="mob.intake" ng-model-options="{getterSetter: true}" ng-change="onChange()" ng-min="0" ng-max="99">
+      <div class="item-text-wrap" ng-if="!enableIntakeCalculator || !displayForm">
+        Cow daily intake
+        <span class="input-unit">kg&nbsp;DM</span>
       </div>
-      <div class="col col-25 positive value-lic" ng-if="!displayForm"><span format-num="mob.intake()"></span></div>
     </div>
-    <div class="item item-divider item-input row" ng-if="displayDemand == true">
+    <div class="col col-25" ng-if="displayForm">
+      <input type="number" ng-model="mob.intake" ng-model-options="{getterSetter: true}" ng-change="onChange()" ng-min="0" ng-max="99">
+    </div>
+    <div class="col col-25 positive value-lic" ng-if="!displayForm"><span format-num="mob.intake()"></span></div>
+  </div>
+  <div class="item item-divider item-input row" ng-if="displayDemand == true">
       <div class="col col-75 item-text-wrap positive">
         Mob demand
         <span class="input-unit positive">kg&nbsp;DM</span>
       </div>
       <div class="col col-25 positive value-lic"><span format-num="mob.demand()"></span></div>
     </div>
-
-  </div>
 
   <script id="mobInfoModal.html" type="text/ng-template">
     <ion-modal-view>

@@ -42,45 +42,48 @@
     </div>
 
     <div ng-if="addMobForm">
-      <div class="item item-input row">
-        <div class="col col-33 item-text-wrap">Mob name</div>
-        <div class="col col-67">
-          <input type="text" ng-model="addedMob.name" ng-model-options="{getterSetter: true}">
-        </div>
-      </div>
-
-      <div class="item item-input row">
-        <div class="col col-75 item-text-wrap">Number of cows</div>
-        <div class="col col-25">
-          <input type="number" ng-model="addedMob.size" ng-model-options="{getterSetter: true}" >
-        </div>
-        <div class="col col-25 positive value-lic"><span format-num="mob.size()"></span></div>
-      </div>
-
-      <div class="item item-input row">
-        <div class="col col-75">
-          <div class="item-text-wrap item-icon-right">
-            <i class="icon calm lic-calc"></i>
-            Cow daily intake
-            <span class="input-unit">kg&nbsp;DM</span>
+      <div class="list card">
+        <div class="item item-input row">
+          <div class="col col-33 item-text-wrap">Mob name</div>
+          <div class="col col-67">
+            <input type="text" ng-model="addedMob.name" ng-model-options="{getterSetter: true}">
           </div>
         </div>
-        <div class="col col-25">
-          <input type="number" ng-model="addedMob.intake" ng-model-options="{getterSetter: true}" >
+
+        <div class="item item-input row">
+          <div class="col col-75 item-text-wrap">Number of cows</div>
+          <div class="col col-25">
+            <input type="number" ng-model="addedMob.size" ng-model-options="{getterSetter: true}" >
+          </div>
+          <div class="col col-25 positive value-lic"><span format-num="mob.size()"></span></div>
         </div>
 
-        <div class="col col-25 positive value-lic"><span format-num="addedMob.intake"></span></div>
+        <div class="item item-input row">
+          <div class="col col-75">
+            <div class="item-text-wrap item-icon-right">
+              <i class="icon calm lic-calc"></i>
+              Cow daily intake
+              <span class="input-unit">kg&nbsp;DM</span>
+            </div>
+          </div>
+          <div class="col col-25">
+            <input type="number" ng-model="addedMob.intake" ng-model-options="{getterSetter: true}" >
+          </div>
+
+          <div class="col col-25 positive value-lic"><span format-num="addedMob.intake"></span></div>
+        </div>
+
+        <div class="col text-right">
+        <button class="button button-icon icon lic-save" ng-click="saveMob()">Save</button>
+      </div>
       </div>
     </div>
 
     <div class="row">
-
-      <div class="col-90 text-right">
+      <div class="col text-right">
         <button class="button button-icon icon lic-add-full" ng-click="addMob()">Add a Mob</button>
       </div>
-      <div class="col-10 text-right">
-        <button class="button button-icon icon lic-save" ng-click="saveMobs()">Save</button>
-      </div>
+
     </div>
 
 
